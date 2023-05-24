@@ -1,0 +1,167 @@
+{
+  "main": {
+    "id": "decfe0fc2452c64f",
+    "type": "split",
+    "children": [
+      {
+        "id": "ed8dadabbd058023",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "049f72c658b55fa0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ef0987d6a0bf88d2",
+    "type": "split",
+    "children": [
+      {
+        "id": "6491177ec62f12df",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c5217618ed29ca2b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "1252138aae578a23",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "7403535e814a2a4b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 210.5
+  },
+  "right": {
+    "id": "8df061e044d53085",
+    "type": "split",
+    "children": [
+      {
+        "id": "90d9d37e560fe3cb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c6dc31bcceb11637",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "732b003050674642",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "README.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3c83d6fd884252a4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "43be399219bb7875",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "049f72c658b55fa0",
+  "lastOpenFiles": [
+    "assets/README.assets/image-20230419234800823.png",
+    "assets/README.assets/image-20230419232417595.png",
+    "assets/README.assets/image-20230419234746037.png",
+    "assets/README.assets/image-20230419003024215.png",
+    "assets/README.assets/image-20230419232331372.png",
+    "assets/README.assets/image-20230204021844914.jpeg",
+    "assets/README.assets/image-20230204021300718.png",
+    "assets/README.assets",
+    "assets",
+    "未命名文件夹",
+    "README.assets/image-20230419234800823.png",
+    "README.assets/image-20230419234746037.png",
+    "README.assets/image-20230419003024215.png",
+    "README.assets/image-20230419232417595.png",
+    "README.assets",
+    "Blue Topaz Legacy (sorted by @ProudBenzene).assets"
+  ]
+}
