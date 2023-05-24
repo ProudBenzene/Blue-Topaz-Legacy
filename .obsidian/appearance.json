@@ -1,3 +1,7 @@
 {
-  "accentColor": ""
+  "accentColor": "",
+  "cssTheme": "AnuPpuccin",
+  "enabledCssSnippets": [
+    "Blue Topaz Legacy"
+  ]
 }

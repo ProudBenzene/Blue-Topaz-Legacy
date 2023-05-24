@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "README.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -147,6 +147,7 @@
   },
   "active": "049f72c658b55fa0",
   "lastOpenFiles": [
+    "assets/README.assets/image-20230524125630410.png",
     "assets/README.assets/image-20230419234800823.png",
     "assets/README.assets/image-20230419232417595.png",
     "assets/README.assets/image-20230419234746037.png",
@@ -160,7 +161,6 @@
     "README.assets/image-20230419234800823.png",
     "README.assets/image-20230419234746037.png",
     "README.assets/image-20230419003024215.png",
-    "README.assets/image-20230419232417595.png",
     "README.assets",
     "Blue Topaz Legacy (sorted by @ProudBenzene).assets"
   ]
