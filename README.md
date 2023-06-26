@@ -4,7 +4,8 @@ cssclass: img-grid
 ---
 # Blue-Topaz-Legacy
 A css snippet used to bring useful features in the BT theme to Obsidian non-Blue Topaz theme users.
-原作者主题见：https://github.com/PKM-er/Blue-Topaz_Obsidian-css
+
+**原作者主题见**：https://github.com/PKM-er/Blue-Topaz_Obsidian-css
 
 # Blue Topaz Legacy
 ## 制作初衷
