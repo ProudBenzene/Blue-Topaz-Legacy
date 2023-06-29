@@ -2164,8 +2164,12 @@ body span[alt*="+grid"] {
   font-size: 4em;
   margin-bottom: 0px;
 }
-.anp-callout-vanilla-normal .callout:not([data-callout-metadata*=anp-sleek], [data-callout-metadata*=anp-vanilla-plus], [data-callout-metadata*=anp-block]):not([data-callout-metadata*=revert], [data-callout=blank-container], [data-callout=multi-column]) > .callout-content, .callout[data-callout-metadata*=anp-vanilla-normal]:not([data-callout-metadata*=revert], [data-callout=blank-container], [data-callout=multi-column]) > .callout-content { /*Anuppuccin适配*/
-  background-color: rgb(var(--ctp-mantle));
+.callout.callout:is([data-callout-metadata*="icon"],
+[data-callout*="icon"]) .callout-content {
+  border-left: none !important; /*Anuppuccin适配*/
+  background-color: transparent !important; /*Anuppuccin适配*/
+  box-shadow: none;
+  border: none;
 }
 
 /* ===========隐藏边框，天气问候============ */
