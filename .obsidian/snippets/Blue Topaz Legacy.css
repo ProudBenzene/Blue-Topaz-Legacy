@@ -2129,7 +2129,7 @@ body span[alt*="+grid"] {
 /******callout icon，日历图标*****/
 .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) {
-  flex: none !important;
+  flex: none;
   border-left: 0;
   background-color: transparent !important;
   box-shadow: none;
@@ -2164,13 +2164,8 @@ body span[alt*="+grid"] {
   font-size: 4em;
   margin-bottom: 0px;
 }
-.anp-callout-vanilla .callout .callout-content {
-  padding: var(--callout-padding);
-  background-color: transparent !important;  /*阿努比斯主题修改1.3.0*/
-}
-.anp-callout-vanilla-normal .callout .callout-content {
-  padding: var(--callout-padding);
-  background-color: transparent !important;  /*阿努比斯主题修改1.4.0*/
+.anp-callout-vanilla-normal .callout:not([data-callout-metadata*=anp-sleek], [data-callout-metadata*=anp-vanilla-plus], [data-callout-metadata*=anp-block]):not([data-callout-metadata*=revert], [data-callout=blank-container], [data-callout=multi-column]) > .callout-content, .callout[data-callout-metadata*=anp-vanilla-normal]:not([data-callout-metadata*=revert], [data-callout=blank-container], [data-callout=multi-column]) > .callout-content { /*Anuppuccin适配*/
+  background-color: rgb(var(--ctp-mantle));
 }
 
 /* ===========隐藏边框，天气问候============ */
@@ -2182,8 +2177,8 @@ body span[alt*="+grid"] {
 }
 .callout.callout:is([data-callout-metadata*="noborder"],
 [data-callout*=noborder]) .callout-content {
-  border-left: none;
-  background-color: transparent;
+  border-left: none !important; /*Anuppuccin适配*/
+  background-color: transparent !important; /*Anuppuccin适配*/
   box-shadow: none;
   border: none;
 }
@@ -2205,17 +2200,6 @@ body span[alt*="+grid"] {
   display: inline;  /*使callout的题头行内排布*/
   visibility: hidden; /*不显示callout的题头*/
 }
-
-.anp-callout-vanilla-normal .callout .callout-content {
-  border-left: none !important;  /*阿努比斯主题修改1.4.0*/
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.anp-callout-vanilla.anp-callout-toggle .callout .callout-title, .anp-callout-vanilla.anp-callout-toggle .callout .callout-content, .anp-callout-block .callout:not([data-callout-metadata*=anp-sleek], [data-callout-metadata*=anp-vanilla-normal], [data-callout-metadata*=anp-vanilla-plus]):not([data-callout-metadata*=revert], [data-callout=blank-container], [data-callout=multi-column]) {
-  border-left: none; /*阿努比斯主题修改1.4.0*/
-}
-
 
 /* callout infobox效果*/
 /*Infobox from https://github.com/SlRvb/Obsidian--ITS-Theme/blob/main/S%20-%20Callouts.css*/
