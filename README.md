@@ -1,11 +1,3 @@
----
-alias: [Blue Topaz Legacy, Blue Topaz Legacy 功能记录与使用说明]
-cssclass: img-grid
-title: Blue Topaz Legacy
-date created: 2023-7-1, 00:35 am
-date modified: 2023-7-11, 23:41 pm
----
-
 > [!note]
 > A css snippet used to bring useful features in the BT theme to Obsidian non-Blue Topaz theme users.
 >
