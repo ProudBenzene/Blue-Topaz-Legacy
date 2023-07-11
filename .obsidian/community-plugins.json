@@ -7,5 +7,7 @@
   "editing-toolbar",
   "obsidian-linter",
   "mysnippets-plugin",
-  "obsidian-git"
+  "obsidian-git",
+  "obsidian-style-settings",
+  "obsidian-quiet-outline"
 ]

@@ -3,6 +3,12 @@
   "cssTheme": "AnuPpuccin",
   "enabledCssSnippets": [
     "Blue Topaz Legacy",
-    "Blue Topaz Codebox"
-  ]
+    "Blue Topaz Codebox",
+    "[AnuPpuccin]custom-rainbow-colors",
+    "[AnuPpuccin]extended-colorschemes",
+    "[AnuPpuccin]floating-search-bar"
+  ],
+  "textFontFamily": "霞鹜文楷",
+  "monospaceFontFamily": "JetBrains Mono",
+  "interfaceFontFamily": "Chalkboard SE,Comic Sans MS"
 }

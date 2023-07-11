@@ -4,8 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "ed8dadabbd058023",
+        "id": "cc2897482dc76869",
         "type": "tabs",
+        "dimension": 31.326434619002825,
+        "children": [
+          {
+            "id": "225579b2856d79b0",
+            "type": "leaf",
+            "state": {
+              "type": "style-settings",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
+        "id": "9a36eb87cbcc354c",
+        "type": "tabs",
+        "dimension": 68.67356538099718,
         "children": [
           {
             "id": "049f72c658b55fa0",
@@ -69,7 +85,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 210.5
+    "width": 210.5,
+    "collapsed": true
   },
   "right": {
     "id": "8df061e044d53085",
@@ -79,6 +96,14 @@
         "id": "90d9d37e560fe3cb",
         "type": "tabs",
         "children": [
+          {
+            "id": "bfd1a3218572b1c1",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {}
+            }
+          },
           {
             "id": "c6dc31bcceb11637",
             "type": "leaf",
@@ -147,6 +172,9 @@
   },
   "active": "049f72c658b55fa0",
   "lastOpenFiles": [
+    "assets/README.assets/image-20230711230856232.png",
+    "assets/README.assets/image-20230711230421971.png",
+    "assets/README.assets/image-20230711230310740.png",
     "assets/README.assets/image-20230524125630410.png",
     "assets/README.assets/image-20230419234800823.png",
     "assets/README.assets/image-20230419232417595.png",
@@ -158,9 +186,6 @@
     "assets/README.assets",
     "assets",
     "未命名文件夹",
-    "README.assets/image-20230419234800823.png",
-    "README.assets/image-20230419234746037.png",
-    "README.assets/image-20230419003024215.png",
     "README.assets",
     "Blue Topaz Legacy (sorted by @ProudBenzene).assets"
   ]
