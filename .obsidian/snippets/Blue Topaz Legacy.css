@@ -95,6 +95,131 @@ settings:
       default-light: '#'
       default-dark: '#'
     -
+      id: highlight-bg-color-folder
+      title: Highlight Background Color
+      title.zh: 高亮背景颜色
+      type: heading
+      level: 3
+      collapsed: true
+    -
+      id: text-highlight
+      title: Highlight text color
+      title.zh: 高亮文本颜色
+      description: ==XXXXX== color
+      type: variable-themed-color
+      opacity: true
+      format: hex
+      default-light: '#'
+      default-dark: '#'
+    -
+      id: highlight-style
+      title: Highlight styles
+      title.zh: 高亮样式
+      type: class-select
+      allowEmpty: false
+      default: bt-default-highlight
+      options:
+        -
+          label: Default
+          value: bt-default-highlight
+        -
+          label: All rounded corners (@Mon & @TheGodOfKing)
+          value: all-rounded-corners-highlight
+        -
+          label: No rounded corners
+          value: no-rounded-corners-highlight
+    -
+      id: highlight-bg-color-head
+      title: Highlight Background Color
+      title.zh: 高亮背景颜色
+      type: heading
+      level: 4
+      collapsed: true
+    -
+      id: text-highlight-bg-h-light
+      title: Hue (Light mode)
+      description: To adjust Hue
+      description.zh: 调整颜色 明亮模式
+      type: variable-number-slider
+      default: 34
+      min: 0
+      max: 360
+      step: 5
+    -
+      id: text-highlight-bg-s-light
+      title: Saturation (Light mode)
+      description: To adjust Saturation
+      description.zh: 调整饱和度 明亮模式
+      type: variable-number-slider
+      default: 100
+      min: 0
+      max: 100
+      step: 5
+      format: "%"
+    -
+      id: text-highlight-bg-l-light
+      title: Lightness (Light mode)
+      description: To adjust Lightness
+      description.zh: 调整亮度 明亮模式
+      type: variable-number-slider
+      default: 80
+      min: 0
+      max: 100
+      step: 5
+      format: "%"
+    -
+      id: text-highlight-bg-a-light
+      title: Opacity (Light mode)
+      description: To adjust Alpha
+      description.zh: 调整透明度（Alpha）明亮模式
+      type: variable-number-slider
+      default: 0.80
+      min: 0
+      max: 1
+      step: 0.05
+    -
+      id: text-highlight-bg-h-dark
+      title: Hue (Dark mode)
+      description: To adjust Hue
+      description.zh: 调整颜色 黑暗模式
+      type: variable-number-slider
+      default: 57
+      min: 0
+      max: 360
+      step: 5
+    -
+      id: text-highlight-bg-s-dark
+      title: Saturation (Dark mode)
+      description: To adjust Saturation
+      description.zh: 调整饱和度 黑暗模式
+      type: variable-number-slider
+      default: 40
+      min: 0
+      max: 100
+      step: 5
+      format: "%"
+    -
+      id: text-highlight-bg-l-dark
+      title: Lightness (Dark mode)
+      description: To adjust Lightness
+      description.zh: 调整亮度 黑暗模式
+      type: variable-number-slider
+      default: 38
+      min: 0
+      max: 100
+      step: 5
+      format: "%"
+    -
+      id: text-highlight-bg-a-dark
+      title: Opacity (Dark mode)
+      description: To adjust Alpha
+      description.zh: 调整透明度（Alpha）黑暗模式
+      type: variable-number-slider
+      default: 0.55
+      min: 0
+      max: 1
+      step: 0.05
+    -
       id: style-options-for-other-plugins
       title: Inline Code
       title.zh: 行内代码
@@ -1352,6 +1477,22 @@ body {
   --theme-color-translucent-005: hsla(var(--interactive-accent-hsl),0.05);
   --theme-color-translucent-001: hsla(var(--interactive-accent-hsl),0.01);
 
+  /*===========高亮============*/
+  --text-highlight-bg-h-dark: 57;
+  --text-highlight-bg-s-dark: 40%;
+  --text-highlight-bg-l-dark: 38%;
+  --text-highlight-bg-a-dark: 0.541;
+
+  --text-highlight-bg-h-light: 34;
+  --text-highlight-bg-s-light: 100%;
+  --text-highlight-bg-l-light: 80%;
+  --text-highlight-bg-a-light: 0.847;
+
+  --text-highlight-bg: hsla(var(--text-highlight-bg-h-dark), var(--text-highlight-bg-s-dark), var(--text-highlight-bg-l-dark), var(--text-highlight-bg-a-dark));
+
+
+
+
   /*===========内外链相关============*/
   --unresolved-link: var(--graph-unresolved);
   --link-unresolved-decoration-color: var(--graph-unresolved);
@@ -1624,6 +1765,117 @@ div.CodeMirror-activeline .CodeMirror-line span.cm-formatting-link.cm-strong.cm-
 .workspace>.workspace-split>.workspace-leaf:first-of-type:last-of-type .view-header {
   border: none;
   background: var(--background-primary);
+}
+
+/* highlight */
+:is(.markdown-preview-view,.markdown-rendered) mark {
+  background-color: var(--text-highlight-bg);
+  padding: 1px 2px;
+  color: var(--text-highlight);
+  border-radius: var(--radius-xs);
+}
+
+.cm-s-obsidian span.cm-highlight,
+.cm-highlight.cm-quote {
+  color: var(--text-highlight);
+  padding: 2px 0 1px 0;
+}
+
+body:not(.no-rounded-corners-highlight):not(.all-rounded-corners-highlight) .cm-s-obsidian .cm-widgetBuffer[aria-hidden="true"]+span.cm-highlight:has(+ .cm-widgetBuffer[aria-hidden="true"]) {
+  border-radius: 3px;
+  padding: 1px 2px;
+}
+
+.cm-s-obsidian span.cm-formatting-highlight {
+  border-radius: 3px 0 0 3px;
+}
+
+.cm-s-obsidian span[class="cm-highlight"]+span.cm-formatting-highlight,
+.cm-s-obsidian span[class*="cm-highlight"][class*="cm-list"]+span.cm-formatting-highlight,
+.cm-s-obsidian span[class*="cm-highlight"][class*="cm-quote"]+span.cm-formatting-highlight,
+.cm-s-obsidian span[class*="cm-highlight"][class*="cm-header"]+span.cm-formatting-highlight,
+.cm-s-obsidian span[class*="cm-highlight"][class*="cm-formatting-code"][class*="cm-inline-code"]+span.cm-formatting-highlight,
+.cm-s-obsidian span[class*="cm-highlight"][class*="cm-formatting-link"]+span.cm-formatting-highlight,
+.cm-s-obsidian span[class*="cm-highlight"][class*="cm-hmd-internal-link"]+span.cm-formatting-highlight,
+.cm-s-obsidian span[class*="cm-highlight"][class*="cm-strong"]+span.cm-formatting-highlight,
+.cm-s-obsidian span[class*="cm-highlight"][class*="cm-em"]+span.cm-formatting-highlight,
+.cm-s-obsidian span[class*="cm-highlight"][class*="strikethrough"]+span.cm-formatting-highlight {
+  border-radius: 0 3px 3px 0;
+}
+
+span.cm-formatting.cm-formatting-code.cm-highlight.cm-inline-code,
+span.cm-highlight.cm-inline-code {
+  border-radius: 0;
+  padding: 2px 0 1px !important;
+}
+
+.theme-dark .cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight {
+  background-image: initial;
+  background-clip: initial;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-color: var(--text-highlight-bg);
+  color: var(--text-highlight);
+}
+
+.CodeMirror-lines span.cm-strong.cm-em.cm-highlight {
+  padding: 0 1px 1px;
+}
+
+body.all-rounded-corners-highlight .cm-s-obsidian span.cm-highlight, 
+body.all-rounded-corners-highlight :is(.markdown-preview-view,.markdown-rendered) mark {
+  -webkit-box-decoration-break: clone;
+  border-radius: 5px;
+  padding: 1px 2px;
+  margin: 0 2px;
+}
+
+body.all-rounded-corners-highlight .cm-s-obsidian .cm-formatting.cm-formatting-highlight:has(+ span.cm-highlight) {
+  border-radius: 5px 0 0 5px;
+  padding: 1px 0;
+  margin: 0 -5px 0 2px;
+}
+
+body.all-rounded-corners-highlight .cm-s-obsidian .cm-formatting.cm-formatting-highlight+span.cm-highlight:has(+ span.cm-highlight) {
+  padding: 1px 4px;
+}
+
+body.all-rounded-corners-highlight .cm-s-obsidian span.cm-highlight+.cm-formatting.cm-formatting-highlight {
+  border-radius: 0 5px 5px 0;
+  padding: 1px 0;
+  margin: 0 2px 0 -5px;
+}
+
+body.no-rounded-corners-highlight .cm-s-obsidian span.cm-highlight, 
+body.no-rounded-corners-highlight :is(.markdown-preview-view,.markdown-rendered) mark {
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.theme-light .cm-s-obsidian span.cm-formatting-highlight,
+.theme-light .cm-s-obsidian span.cm-highlight:not([class*="code"]),
+.theme-light :is(.markdown-preview-view,.markdown-rendered) mark,
+.theme-light .cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight,
+.theme-light .popover mark,
+.theme-light span.cm-strong.cm-em.cm-highlight {
+  background-color: hsla(var(--text-highlight-bg-h-light), var(--text-highlight-bg-s-light), var(--text-highlight-bg-l-light), var(--text-highlight-bg-a-light));
+}
+.theme-dark .cm-s-obsidian span.cm-formatting-highlight,
+.theme-dark .cm-s-obsidian span.cm-highlight:not([class*="code"]),
+.theme-dark :is(.markdown-preview-view,.markdown-rendered) mark,
+.theme-dark .cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight,
+.theme-dark .popover mark,
+.theme-dark span.cm-strong.cm-em.cm-highlight {
+  background-color: hsla(var(--text-highlight-bg-h-dark), var(--text-highlight-bg-s-dark), var(--text-highlight-bg-l-dark), var(--text-highlight-bg-a-dark));
+}
+
+.theme-light :is(.markdown-preview-view,.markdown-rendered) :not(font)>strong>em>mark {
+  background-color: hsla(var(--text-highlight-bg-h-light), calc(var(--text-highlight-bg-s-light)*1.5), calc(var(--text-highlight-bg-l-light)*0.6), calc(var(--text-highlight-bg-a-light)*0.28));
+}
+
+.theme-dark :is(.markdown-preview-view,.markdown-rendered) :not(font)>strong>em>mark {
+  background-color: hsla(var(--text-highlight-bg-h-dark), calc(var(--text-highlight-bg-s-dark)*1.5), calc(var(--text-highlight-bg-l-dark)*1.1), calc(var(--text-highlight-bg-a-dark)*0.55));
 }
 
 /*===================库名称字体====================*/
@@ -5471,6 +5723,7 @@ body:not(.default-loading-page).loading-custom-text.loading-text-shinning-style.
 }
 
 
+
 .cm-s-obsidian .HyperMD-table-row.HyperMD-table-row.HyperMD-table-row {
   min-width: max-content;
   white-space: pre-wrap;
@@ -5958,11 +6211,6 @@ body.rainbow-lines-reading :is(.markdown-preview-view,.markdown-rendered) li li 
   color: rgb(var(--accent-8-rgb));
 }
 
-body:is(.rainbow-lines-reading,.list-vertical-line-one,.list-vertical-line-two,.list-vertical-line-three) table.dataview.table-view-table :is(ol,ul) :is(ol,ul)::before,
-body:is(.rainbow-lines-reading,.list-vertical-line-one,.list-vertical-line-two,.list-vertical-line-three) .kanban-plugin__markdown-preview-view :is(ol,ul) :is(ol,ul)::before {
-  border-left: none;
-}
-
 body.rainbow-ordered-list :is(.markdown-preview-view,.markdown-rendered) ul>li::marker,
 body.rainbow-ordered-list :is(.markdown-preview-view,.markdown-rendered) ol>li::marker {
   color: rgb(var(--accent-1-rgb));
@@ -6019,9 +6267,9 @@ body.rainbow-ordered-list :is(.markdown-preview-view,.markdown-rendered) ol>li o
   background-color: unset;
 }
 
-body:not(.default-list-marker) .list-bullet::before {
+/* body:not(.default-list-marker) .list-bullet::before {
   display: none;
-}
+} */
 
 body:not(.default-list-marker) .markdown-rendered .list-bullet::after {
   content: '\2022';
@@ -6033,7 +6281,7 @@ body:not(.default-list-marker) .markdown-rendered .list-bullet::after {
   background: transparent;
   color: var(--list-ul-marker-color);
   margin-left: 0.13em;
-  margin-top: calc(0.466em * var(--line-height-list) - 0.286em);
+  /* margin-top: calc(0.466em * var(--line-height-list) - 0.286em); */
   line-height: 0.55;
   transition: all 0.15s ease;
 }
@@ -6095,7 +6343,7 @@ body:not(.default-list-marker) .has-list-bullet .list-bullet::after,
 body:not(.default-list-marker) .has-list-bullet .has-list-bullet .list-bullet::after,
 body:not(.default-list-marker) .has-list-bullet .has-list-bullet .has-list-bullet .list-bullet::after,
 body:not(.default-list-marker) .has-list-bullet .has-list-bullet .has-list-bullet .has-list-bullet .list-bullet::after {
-  top: 0;
+  /* top: 0; */
 }
 
 body:not(.default-list-marker) .markdown-source-view.mod-cm6 .cm-indent::before {
@@ -6103,7 +6351,15 @@ body:not(.default-list-marker) .markdown-source-view.mod-cm6 .cm-indent::before 
 }
 
 
-/*另一部分代码*/
+.is-focused .mod-active .workspace-tab-header.is-active
+.workspace-tab-header-inner-icon {
+  color: var(--theme-color);
+}
+
+.workspace-ribbon.mod-left {
+  margin-top: calc(var(--header-height)*0.98);
+}
+
 /* .has-list-bullet .list-bullet:after {
   margin-left: -10px;
 } */
@@ -6298,6 +6554,128 @@ body.list-bracket-style :is(.markdown-preview-view,.markdown-rendered) ol:not(.c
   border-color: var(--list-ol-hover);
 }
 
+
+body.list-bracket-style-two :is(.markdown-preview-view,.markdown-rendered):not(.kanban) :is(ul,ol)>li:not(.task-list-item) {
+  border-radius: var(--radius-s);
+  word-wrap: break-word;
+  word-break: break-word;
+  transition: all 300ms ease-in-out;
+  border-left: 0.125em solid var(--list-ul-block-color);
+}
+
+body.list-bracket-style-two :is(.markdown-preview-view,.markdown-rendered):not(.kanban) ol>li:not(.task-list-item) {
+  border-left: 0.125em solid var(--list-ol-block-color);
+}
+
+body.list-bracket-style-two .markdown-rendered.show-indentation-guide li:not(.task-list-item) > ul::before, 
+body.list-bracket-style-two .markdown-rendered.show-indentation-guide li:not(.task-list-item) > ol::before {
+  border: none;
+}
+
+/*list-bracket-style-two*/
+body.list-bracket-style-two ol,
+body.list-bracket-style-two ol ol,
+body.list-bracket-style-two ol ol ol,
+body.list-bracket-style-two ol ul ol,
+body.list-bracket-style-two ol ol ol ol,
+body.list-bracket-style-two ol ol ul ol,
+body.list-bracket-style-two ol ul ol ol {
+  list-style: none;
+}
+
+body.list-bracket-style-two ol {
+  counter-reset: niceBT;
+}
+
+body.list-bracket-style-two ol>li {
+  counter-increment: niceBT;
+}
+
+body.list-bracket-style-two ol>li::before {
+  content: counters(niceBT, '.') '. ';
+  font-weight: bold;
+  font-family: Monaco;
+  font-size: 0.8em;
+  color: var(--list-ol-number-color);
+  display: inline-block;
+  white-space: pre;
+}
+
+body.list-bracket-style-two ul>li:not(.task-list-item) {
+  padding-left: 1.1em;
+}
+body.list-bracket-style-two ol>li:not(.task-list-item) {
+  padding-left: 0.4em;
+}
+
+body.list-bracket-style-two .markdown-rendered .list-bullet {
+  left: 0.6em;
+}
+
+body.list-bracket-style-three :is(.markdown-preview-view,.markdown-rendered):not(.kanban) :is(ul,ol):has(:is(ol,ul))>li:has(:is(ol,ul)):not(.task-list-item) {
+  border-radius: var(--radius-s);
+  word-wrap: break-word;
+  word-break: break-word;
+  transition: all 300ms ease-in-out;
+  border-left: 0.125em solid var(--list-ul-block-color);
+
+}
+body.list-bracket-style-three :is(.markdown-preview-view,.markdown-rendered):not(.kanban) ol:has(:is(ol,ul))>li:has(:is(ol,ul)):not(.task-list-item) {
+  border-left: 0.125em solid var(--list-ol-block-color);
+}
+
+body.list-bracket-style-three :is(.markdown-preview-view,.markdown-rendered):not(.kanban) :is(ul,ol):has(:is(ol,ul))>li:has(:is(ol,ul)):not(.task-list-item) {
+  padding-left: 0.3em;
+}
+
+body.list-bracket-style-three .markdown-rendered.show-indentation-guide li:not(.task-list-item) > ul::before, 
+body.list-bracket-style-three .markdown-rendered.show-indentation-guide li:not(.task-list-item) > ol::before {
+  border: none;
+}
+body.list-bracket-style-three :is(.markdown-preview-view,.markdown-rendered):not(.kanban) li:not(.task-list-item) {
+  padding-left: 0.45rem;
+}
+
+
+/*list-vertical-line-one*/
+body.list-vertical-line-one ol,
+body.list-vertical-line-one ol ol,
+body.list-vertical-line-one ol ol ol,
+body.list-vertical-line-one ol ul ol,
+body.list-vertical-line-one ol ol ol ol,
+body.list-vertical-line-one ol ol ul ol,
+body.list-vertical-line-one ol ul ol ol {
+  list-style: none;
+}
+
+body.list-vertical-line-one ol {
+  counter-reset: niceBTT;
+}
+
+body.list-vertical-line-one ol>li {
+  counter-increment: niceBTT;
+}
+
+body.list-vertical-line-one ol>li::before {
+  content: counters(niceBTT, '.') '. ';
+  font-weight: bold;
+  color: var(--list-ol-number-color);
+  margin-left: -1.3em;
+  font-family: Monaco;
+  font-size: 0.9em;
+}
+
+body.list-vertical-line-one :is(ol,ul) :is(ol,ul) {
+  position: relative;
+}
+
+:is(body.list-vertical-line-one,body.list-vertical-line-one, body.list-vertical-line-one) :is(.markdown-preview-view,.markdown-rendered) ul ol:not(.contains-task-list)>li:not(.task-list-item), 
+:is(body.list-vertical-line-one,body.list-vertical-line-one, body.list-vertical-line-one) :is(.markdown-preview-view,.markdown-rendered) ul ol:not(.contains-task-list)+ul>li:not(.task-list-item), 
+:is(body.list-vertical-line-one,body.list-vertical-line-one, body.list-vertical-line-one) :is(.markdown-preview-view,.markdown-rendered):not(.kanban) ol ul>li:not(.task-list-item),
+:is(body.list-vertical-line-one,body.list-vertical-line-one, body.list-vertical-line-one) :is(.markdown-preview-view,.markdown-rendered):not(.kanban) ol ul+ol>li:not(.task-list-item) {
+  margin-top: calc(var(--margin-list) * -0.25em);
+  padding-top: calc(var(--margin-list) * 0.25em);
+}
 
 
 
@@ -6876,7 +7254,6 @@ body.colorful-ordered-list ul ul ul ul ul ul ol ol li::marker,
 body.colorful-ordered-list ul ul ul ul ul ul ul ol li::marker {
   color: hsl(calc(var(--accent-h) + 340),var(--accent-s),calc(var(--accent-l)*0.95));
 }
-
 
 
 @property --colorA {
