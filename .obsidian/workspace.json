@@ -30,7 +30,7 @@
               "type": "markdown",
               "state": {
                 "file": "README.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               }
             }
@@ -170,7 +170,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "049f72c658b55fa0",
+  "active": "c5217618ed29ca2b",
   "lastOpenFiles": [
     "assets/README.assets/image-20230711230856232.png",
     "assets/README.assets/image-20230711230421971.png",

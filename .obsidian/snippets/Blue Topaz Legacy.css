@@ -1175,6 +1175,19 @@ settings:
       default-light: '#'
       default-dark: '#'
     -
+      id: metadata-styles
+      title: Metadata(Yaml)
+      type: heading
+      level: 2
+      collapsed: true
+    -
+      id: show-full-metadata
+      title: Show full metadata in Reading mode
+      title.zh: 阅读模式下显示完整的metadata信息
+      description.zh: 需要先在设置中开启显示front-matter，笔记cssclass中声明show-full-metadata 可单独控制是否显示yaml
+      type: class-toggle
+      default: false
+    -
       id: style-options-for-admonition-plugin-header
       title: Admonition&Callout Style
       type: heading
@@ -7624,3 +7637,23 @@ body.fancy-hr-number .markdown-source-view.mod-cm6 .hr::after {
     break-after: page;
     visibility: visible;
   }
+
+  /* ================Full Metadata================ */
+.show-full-metadata  .frontmatter-container:not(.is-collapsed) .frontmatter-section {
+    display: flex ;
+}
+body:not(.show-full-metadata) .frontmatter-container  .frontmatter-container-header  ~ .frontmatter-section:not(:is(.mod-aliases,.mod-tags)) {
+    display: none;
+}
+
+body:not(.show-full-metadata) .frontmatter-container:has(.frontmatter-container-header + .frontmatter-section:not(:is(.mod-aliases,.mod-tags))) {
+    display: none; 
+}
+
+body:not(.show-full-metadata) .frontmatter-container:not(:has(.frontmatter-container-header + .frontmatter-section)) {
+    display: none;
+}
+
+.markdown-preview-view.show-full-metadata .frontmatter-container {
+    display: block ;
+}

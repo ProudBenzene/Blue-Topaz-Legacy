@@ -90,6 +90,9 @@
 - without icons
 - with Numbers
 
+### Metadata 样式
+可以设置在阅读模式下仅显示 metadata 中的 `alias` 和 `tag` 字段。
+
 ### Admonition 特别样式支持
 
 完全适配了 Blue Topaz 内置的所有 ad 类型，包括：
