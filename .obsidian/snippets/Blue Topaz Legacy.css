@@ -456,6 +456,12 @@ settings:
       type: class-toggle
       default: false
     -
+      id: link-underline-internal-wavy
+      title: Toggle Internal Link Wavy Underline
+      title.zh: 开启内部链接下划波浪线（默认：无）
+      type: class-toggle
+      default: false
+    -
       id: link-underline-external
       title: Disable External Link Underline
       title.zh: 关闭外部链接下划线（默认：有）
@@ -4998,13 +5004,33 @@ a.external-link {
 }
 
 
+
 body.link-underline-external .markdown-source-view.mod-cm6 .cm-link .cm-underline,
-body.link-underline-externa .markdown-source-view.mod-cm6 .cm-url .cm-underline,
+body.link-underline-external .markdown-source-view.mod-cm6 .cm-url .cm-underline,
 body.link-underline-external  a.external-link,
 body:not(.link-underline-internal) .markdown-source-view.mod-cm6 .cm-hmd-internal-link >*:not(.is-unresolved).cm-underline,
 body:not(.link-underline-internal) :is(.markdown-preview-view,.markdown-rendered) .internal-link:not(.is-unresolved) {
   text-decoration-line:none;
 }
+
+body.link-underline-internal .markdown-source-view.mod-cm6 .cm-hmd-internal-link >*:not(.is-unresolved).cm-underline,
+body.link-underline-internal :is(.markdown-preview-view,.markdown-rendered) .internal-link:not(.is-unresolved) {
+  text-decoration-line: underline !important; /* Anu主题适配 */
+}
+
+body.link-underline-internal-wavy .markdown-source-view.mod-cm6 .cm-hmd-internal-link >*:not(.is-unresolved).cm-underline,
+body.link-underline-internal-wavy :is(.markdown-preview-view,.markdown-rendered) .internal-link:not(.is-unresolved) {
+  text-decoration-style: wavy; /* 设置为波浪线样式 */
+  text-decoration-color: orange; /* 设置为橙色 */
+}
+
+
+.hide-wavy :is(body.link-underline-internal-wavy .markdown-source-view.mod-cm6 .cm-hmd-internal-link >*:not(.is-unresolved).cm-underline),
+.hide-wavy :is(body.link-underline-internal-wavy :is(.markdown-preview-view,.markdown-rendered) .internal-link:not(.is-unresolved)) {
+  text-decoration-line: none !important;
+  text-decoration-style: underline;
+}
+
 
 .cm-url:hover {
   transition: all 600ms;
