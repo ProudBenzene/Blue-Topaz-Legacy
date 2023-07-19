@@ -4,24 +4,8 @@
     "type": "split",
     "children": [
       {
-        "id": "cc2897482dc76869",
-        "type": "tabs",
-        "dimension": 31.326434619002825,
-        "children": [
-          {
-            "id": "225579b2856d79b0",
-            "type": "leaf",
-            "state": {
-              "type": "style-settings",
-              "state": {}
-            }
-          }
-        ]
-      },
-      {
         "id": "9a36eb87cbcc354c",
         "type": "tabs",
-        "dimension": 68.67356538099718,
         "children": [
           {
             "id": "049f72c658b55fa0",

@@ -2,11 +2,12 @@
   "accentColor": "",
   "cssTheme": "AnuPpuccin",
   "enabledCssSnippets": [
-    "Blue Topaz Legacy",
     "Blue Topaz Codebox",
     "[AnuPpuccin]custom-rainbow-colors",
     "[AnuPpuccin]extended-colorschemes",
-    "[AnuPpuccin]floating-search-bar"
+    "[AnuPpuccin]floating-search-bar",
+    "涂黑圆角",
+    "Blue Topaz Legacy"
   ],
   "textFontFamily": "霞鹜文楷",
   "monospaceFontFamily": "JetBrains Mono",
