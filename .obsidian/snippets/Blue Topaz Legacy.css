@@ -275,6 +275,23 @@ settings:
       default-light: '#'
       default-dark: '#'
     -
+      id: highlight-style
+      title: Highlight styles
+      title.zh: 涂黑样式
+      type: class-select
+      allowEmpty: false
+      default: bt-default-highlight
+      options:
+        -
+          label: Default
+          value: bt-cloze-default-highlight
+        -
+          label: All rounded corners (@Mon & @TheGodOfKing)
+          value: all-cloze-rounded-corners-highlight
+        -
+          label: No rounded corners
+          value: no-cloze-rounded-corners-highlight
+    -
       id: cloze-decoration
       title: Underline decoration style
       description: Can type 'solid', 'dotted', 'dashed', 'wavy' or 'double' for Cloze Style One, i.e. ==~~your words~~==, hovering to find "your words", should declare "cssclass：cloze" in the YAML area if you want to use them in the Live Preview mode
@@ -4808,6 +4825,10 @@ body:not(.remove-cloze-style) .markdown-source-view.is-live-preview .cm-highligh
   transition: all 400ms ease-in-out;
 }
 
+body:not(.remove-cloze-style)  .markdown-rendered mark:has(> del) {
+  background-color: transparent!important;
+}
+
 .markdown-source-view.is-live-preview.cloze .cm-em.cm-highlight.cm-strikethrough:not([class*="formatting"]),
 body:not(.remove-cloze-style) .markdown-source-view.is-live-preview .cm-em.cm-highlight.cm-strikethrough:not([class*="formatting"]) {
   color: transparent !important;
@@ -4818,13 +4839,50 @@ body:not(.remove-cloze-style) .markdown-source-view.is-live-preview .cm-em.cm-hi
 
 /*cloze*/
 body:not(.remove-cloze-style) :is(.markdown-preview-view,.markdown-rendered) mark > del,
-:is(.markdown-preview-view,
-.markdown-rendered).cloze mark > del {
+:is(.markdown-preview-view,.markdown-rendered).cloze mark > del {
   background-color: var(--cloze-bg-color);
   color: var(--cloze-bg-color);
   text-decoration: underline var(--cloze-decoration) var(--cloze-decoration-color);
 }
 
+/**圆角涂黑**/
+body:not(.remove-cloze-style):not(.no-cloze-rounded-corners-highlight):not(.all-cloze-rounded-corners-highlight) :is(.markdown-preview-view,.markdown-rendered) mark > del,
+body:not(.remove-cloze-style):not(.no-cloze-rounded-corners-highlight):not(.all-cloze-rounded-corners-highlight) :is(.markdown-preview-view,.markdown-rendered) .cloze mark > del {
+  border-radius: 3px;
+  padding: 1px 2px;
+}
+body.all-cloze-rounded-corners-highlight:not(.remove-cloze-style) mark > del,
+body.all-cloze-rounded-corners-highlight:not(.remove-cloze-style) :is(.markdown-preview-view,.markdown-rendered) mark > del {
+  -webkit-box-decoration-break: clone;
+  border-radius: 5px;
+  padding: 1px 2px;
+  margin: 0 2px;
+}
+
+body.all-cloze-rounded-corners-highlight:not(.remove-cloze-style) .cm-s-obsidian .cm-formatting.cm-formatting-highlight:has(+ span.cm-highlight) mark > del {
+  border-radius: 5px 0 0 5px;
+  padding: 1px 0;
+  margin: 0 -5px 0 2px;
+}
+
+body.all-cloze-rounded-corners-highlight:not(.remove-cloze-style) .cm-s-obsidian .cm-formatting.cm-formatting-highlight+span.cm-highlight:has(+ span.cm-highlight) mark > del {
+  padding: 1px 4px;
+}
+
+body.all-cloze-rounded-corners-highlight:not(.remove-cloze-style) .cm-s-obsidian span.cm-highlight+.cm-formatting.cm-formatting-highlight mark > del {
+  border-radius: 0 5px 5px 0;
+  padding: 1px 0;
+  margin: 0 2px 0 -5px;
+}
+
+body.no-cloze-rounded-corners-highlight:not(.remove-cloze-style) .cm-s-obsidian span.cm-highlight mark > del, 
+body.no-cloze-rounded-corners-highlight:not(.remove-cloze-style) :is(.markdown-preview-view,.markdown-rendered) mark > del {
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/**继续**/
 body:not(.remove-cloze-style) .cm-s-obsidian .cm-formatting.cm-formatting-highlight.cm-highlight~span.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-highlight.cm-strikethrough:not(.cm-em),
 body:not(.remove-cloze-style) .cm-s-obsidian .cm-formatting.cm-formatting-highlight.cm-highlight~span.cm-formatting-strikethrough.cm-highlight.cm-strikethrough,
 .markdown-source-view.cloze .cm-formatting.cm-formatting-highlight.cm-highlight~span.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-highlight.cm-strikethrough:not(.cm-em),
@@ -5043,7 +5101,6 @@ body.link-underline-internal-wavy :is(.markdown-preview-view,.markdown-rendered)
   text-decoration-line: none !important;
   text-decoration-style: underline;
 }
-
 
 .cm-url:hover {
   transition: all 600ms;

@@ -1,0 +1,57 @@
+/* @settings
+settings:
+    -
+      id: highlight-style
+      title: Highlight styles
+      title.zh: 涂黑样式
+      type: class-select
+      allowEmpty: false
+      default: bt-default-highlight
+      options:
+        -
+          label: Default
+          value: bt-cloze-default-highlight
+        -
+          label: All rounded corners (@Mon & @TheGodOfKing)
+          value: all-cloze-rounded-corners-highlight
+        -
+          label: No rounded corners
+          value: no-cloze-rounded-corners-highlight
+*/
+
+/**圆角涂黑**/
+body:not(.remove-cloze-style):not(.no-cloze-rounded-corners-highlight):not(.all-cloze-rounded-corners-highlight) :is(.markdown-preview-view,.markdown-rendered) mark > del,
+body:not(.remove-cloze-style):not(.no-cloze-rounded-corners-highlight):not(.all-cloze-rounded-corners-highlight) :is(.markdown-preview-view,.markdown-rendered) .cloze mark > del {
+  border-radius: 3px;
+  padding: 1px 2px;
+}
+body.all-cloze-rounded-corners-highlight:not(.remove-cloze-style) mark > del,
+body.all-cloze-rounded-corners-highlight:not(.remove-cloze-style) :is(.markdown-preview-view,.markdown-rendered) mark > del {
+  -webkit-box-decoration-break: clone;
+  border-radius: 5px;
+  padding: 1px 2px;
+  margin: 0 2px;
+}
+
+body.all-cloze-rounded-corners-highlight:not(.remove-cloze-style) .cm-s-obsidian .cm-formatting.cm-formatting-highlight:has(+ span.cm-highlight) mark > del {
+  border-radius: 5px 0 0 5px;
+  padding: 1px 0;
+  margin: 0 -5px 0 2px;
+}
+
+body.all-cloze-rounded-corners-highlight:not(.remove-cloze-style) .cm-s-obsidian .cm-formatting.cm-formatting-highlight+span.cm-highlight:has(+ span.cm-highlight) mark > del {
+  padding: 1px 4px;
+}
+
+body.all-cloze-rounded-corners-highlight:not(.remove-cloze-style) .cm-s-obsidian span.cm-highlight+.cm-formatting.cm-formatting-highlight mark > del {
+  border-radius: 0 5px 5px 0;
+  padding: 1px 0;
+  margin: 0 2px 0 -5px;
+}
+
+body.no-cloze-rounded-corners-highlight:not(.remove-cloze-style) .cm-s-obsidian span.cm-highlight mark > del, 
+body.no-cloze-rounded-corners-highlight:not(.remove-cloze-style) :is(.markdown-preview-view,.markdown-rendered) mark > del {
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}

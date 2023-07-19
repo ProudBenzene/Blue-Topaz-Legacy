@@ -4,24 +4,8 @@
     "type": "split",
     "children": [
       {
-        "id": "cc2897482dc76869",
-        "type": "tabs",
-        "dimension": 23.98871119473189,
-        "children": [
-          {
-            "id": "225579b2856d79b0",
-            "type": "leaf",
-            "state": {
-              "type": "style-settings",
-              "state": {}
-            }
-          }
-        ]
-      },
-      {
         "id": "9a36eb87cbcc354c",
         "type": "tabs",
-        "dimension": 76.01128880526811,
         "children": [
           {
             "id": "049f72c658b55fa0",
@@ -30,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "README.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -170,7 +154,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "c5217618ed29ca2b",
+  "active": "049f72c658b55fa0",
   "lastOpenFiles": [
     "assets/README.assets/image-20230711230856232.png",
     "assets/README.assets/image-20230711230421971.png",
