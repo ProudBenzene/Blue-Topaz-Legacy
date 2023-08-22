@@ -1205,31 +1205,34 @@ settings:
       type: class-toggle
       default: false
     -
-      id: style-options-for-admonition-plugin-header
-      title: Admonition&Callout Style
+      id: page-layout
+      title: Page Layout
+      title.zh: 页面设置
       type: heading
-      level: 2
+      level: 1
       collapsed: true
     -
-      id: full-width-callout
-      title: Full-width layout for callout & admonition
-      title.zh: callout和ad块全宽显示
-      description.zh: 不收缩减栏宽影响，全宽显示callout块
-      type: class-toggle
-      default: false
-    -
-      id: style-options-for-admonition-plugin
-      title: Admonition special style support
-      title.zh: 是否开启Admonition特别样式支持
-      type: class-toggle
-      default: true
-      description : 目前支持ad类型：blank 全透明框🔸def definition🔸thm theorem🔸lem lemma🔸cor corollary🔸pro proposition 🔸hibox  自动隐藏框🔸col2 col3 col4内容分多栏🔸kanban 伪看板🔸table 表格单行全部显示❗使用方法❗下面以thm类型为例，在admonition插件的设置页面中，类型填 thm，标题填 定理，图标选择hand-point-right，颜色自己选比如浅绿色，添加成功后，在正文中使用代码块```ad-thm 即可激活。其他类型以此类推。
+      id: left-ribbon-style
+      title: 左侧边栏样式选择
+      type: class-select
+      allowEmpty: false
+      default: default-left-ribbon-style
+      options:
+      -
+        label: Fixed
+        value: default-left-ribbon-style
+      -
+        label: Hide to left
+        value: hide-left-ribbon
+      -
+        label: Hide to the left retention drawer
+        value: hide-left-ribbon-retention-drawer
     -
       id: notebook-liked-background-settings
       title: Notebook-liked background options
       title.zh: 类笔记样式背景设置
       type: heading
-      level: 1
+      level: 2
       collapsed: true
     -
       id: background-notebook-liked-switch
@@ -1315,7 +1318,7 @@ settings:
       title: Loading Page
       title.zh: 加载页面
       type: heading
-      level: 1
+      level: 2
       collapsed: true
     -
       id: loading-page-style-option
@@ -1335,7 +1338,7 @@ settings:
       title: Custom Text
       title.zh: 自定义文本
       type: heading
-      level: 2
+      level: 3
       collapsed: true
     -
       id: loading-diy-text
@@ -1386,6 +1389,48 @@ settings:
       title.zh: 变色效果
       type: class-toggle
       default: false
+    -
+      id: plugins
+      title: Plugins
+      title.zh: 插件支持
+      type: heading
+      level: 1
+      collapsed: true
+    -
+      id: style-options-for-admonition-plugin-header
+      title: Admonition&Callout Style
+      type: heading
+      level: 2
+      collapsed: true
+    -
+      id: full-width-callout
+      title: Full-width layout for callout & admonition
+      title.zh: callout和ad块全宽显示
+      description.zh: 不收缩减栏宽影响，全宽显示callout块
+      type: class-toggle
+      default: false
+    -
+      id: style-options-for-admonition-plugin
+      title: Admonition special style support
+      title.zh: 是否开启Admonition特别样式支持
+      type: class-toggle
+      default: true
+      description : 目前支持ad类型：blank 全透明框🔸def definition🔸thm theorem🔸lem lemma🔸cor corollary🔸pro proposition 🔸hibox  自动隐藏框🔸col2 col3 col4内容分多栏🔸kanban 伪看板🔸table 表格单行全部显示❗使用方法❗下面以thm类型为例，在admonition插件的设置页面中，类型填 thm，标题填 定理，图标选择hand-point-right，颜色自己选比如浅绿色，添加成功后，在正文中使用代码块```ad-thm 即可激活。其他类型以此类推。
+    -
+      id: style-options-for-buttons-plugin-heading
+      title: Buttons
+      type: heading
+      level: 2
+      collapsed: true
+    -
+      id: style-options-for-buttons-plugin
+      title: Buttons special style support
+      title.zh: 是否开启Buttons特别样式支持
+      type: class-toggle
+      default: true
+      description : 目前内置class：🔸circle_btn 圆形按钮🔸blank 透明按钮🔸grad_button渐变按钮🟣g_purple 紫色🔵g_blue蓝色🟢g_green 绿色💚g_lightgreen 浅绿🟡g_yellow黄色
+    -
+
 
 */
 
@@ -5142,7 +5187,7 @@ body.codebox-frosted-glass  .canvas-node-container  pre[class*='language-'] {
 body.codebox-frosted-glass .cm-s-obsidian div.HyperMD-codeblock-bg,
 body.codebox-frosted-glass :not(pre)>code[class*='language-'],
 body.codebox-frosted-glass pre[class*='language-'] {
-  backdrop-filter: blur(calc(var(--blur-codebox-frosted-glass)*2px));
+  /*backdrop-filter: blur(calc(var(--blur-codebox-frosted-glass)*2px)); Anu代码块语法名适配*/
 }
 
 code[class*="language-"] {
@@ -7713,4 +7758,475 @@ body:not(.show-full-metadata) .frontmatter-container:not(:has(.frontmatter-conta
 
 .markdown-preview-view.show-full-metadata .frontmatter-container {
     display: block ;
+}
+
+/*=========================buttons=========================*/
+/*reduce space of header buttons*/
+body:not(.is-mobile) div.nav-header {
+  padding: 3px 2px;
+  line-height: 1;
+}
+
+div.nav-buttons-container {
+  margin: 1px;
+}
+
+.workspace-leaf-content[data-type='file-explorer'] .nav-buttons-container {
+  margin-right: 2px;
+  border-radius: var(--radius-s);
+}
+
+input.search-input {
+  margin: -2px 0px -3px 0px;
+}
+
+.nav-action-button {
+  margin: 0px 5px 0px 5px !important;
+}
+
+
+/*tag page button*/
+.nav-buttons-container>.nav-action-button,
+.nav-buttons-container>.nav-action-button.is-active {
+  padding: 3px 2px 1px;
+}
+
+.titlebar-text {
+  font-size: var(--font-size-obsidian-titlebar);
+  font-weight: 600;
+}
+
+body:not(.is-focused) .titlebar-text {
+  opacity: 0.5;
+}
+
+.side-dock-ribbon-tab:hover,
+.side-dock-ribbon-action:hover {
+  color: var(--theme-color);
+}
+
+.side-dock-settings {
+  margin-top: auto;
+  margin-bottom: 2px;
+}
+
+.nav-folder.mod-root>.nav-folder-title {
+  padding-left: 5px;
+  font-size: var(--font-size-vault-name);
+  font-family: var(--font-family-vault);
+  font-weight: bolder;
+  text-shadow: 1px 1px 6px var(--theme-color-translucent-04);
+  cursor: default;
+  z-index: 900;
+}
+
+.theme-dark .nav-folder.mod-root>.nav-folder-title {
+  color: var(--theme-color);
+  text-shadow: none;
+}
+
+.theme-dark .nav-folder.mod-root>.nav-folder-title:hover {
+  background-color: var(--background-secondary-alt);
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+.theme-light .nav-folder.mod-root>.nav-folder-title:hover {
+  background-color: var(--background-secondary-alt);
+  text-shadow: 1px 1px 5px #ffffff7c;
+  color: var(--theme-color);
+  opacity: 1;
+}
+/*=======================
+===custom buttons by cuman====
+========================*/
+/*便签动画效果*/
+@keyframes shake { /* 水平抖动，核心代码 */
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(+2px, 0, 0); }
+  30%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(+4px, 0, 0); }
+  50% { transform: translate3d(-4px, 0, 0); }
+}
+:is(.markdown-preview-view,.markdown-rendered) .stickies:hover{
+  animation: shake 800ms ease-in-out;
+}
+
+/*按钮颜色*/
+/*图标按钮*/
+button:not(.clickable-icon) {
+  box-shadow: none;
+}
+button:not(.clickable-icon):hover {
+  box-shadow: var(--input-shadow-hover);
+}
+body.style-options-for-buttons-plugin button.circle_btn {
+  box-shadow: none;
+  font-size: 12px;
+  word-break: keep-all;
+  margin: 4px;
+  padding: 0px;
+  height: 50px;
+  /* border-radius:50%; */
+  position: relative;
+  border: 0;
+  display: inline-grid;
+  text-align: center;
+  justify-items: center;
+}
+/* blank 透明按钮*/
+body.style-options-for-buttons-plugin button.blank {
+  box-shadow: none;
+  background: #fff0f000;
+  padding: 0;
+}
+body.style-options-for-buttons-plugin button.blank:hover {
+  animation: swing_image 0.8s linear 0s 1 normal;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+}
+
+body.style-options-for-buttons-plugin .admonition-content span>button.grad_button {
+  margin:3px;
+}
+body.style-options-for-buttons-plugin button.grad_button {
+  margin:5PX;
+  line-height: inherit;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 90px;
+  padding: 0 18px;
+  height: 38px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: box-shadow .5s ease, transform .2s ease;
+  will-change: transform;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  transform:
+    translateY(var(--ty, 0))
+    rotateX(var(--rx, 0))
+    rotateY(var(--ry, 0))
+    translateZ(var(--tz, -12px));
+}
+
+body.style-options-for-buttons-plugin button.grad_button:hover {
+  animation: swing_image 0.8s linear 0s 1 normal;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+}
+body.style-options-for-buttons-plugin button.g_purple {
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+}
+body.style-options-for-buttons-plugin  button.g_blue {
+  background: linear-gradient(135deg, #3370ff, #9fb9f6);
+}
+body.style-options-for-buttons-plugin button.g_green {
+  background: linear-gradient(135deg, #0eb347, #5be08a);
+}
+body.style-options-for-buttons-plugin button.g_lightgreen {
+  color: #17695e;
+  background: linear-gradient(135deg, #adfdad, #dafdda);
+}
+body.style-options-for-buttons-plugin  button.g_yellow {
+  color: #836f20;
+  background: linear-gradient(135deg, #fcd539, #ffeb9b);
+}
+body.style-options-for-buttons-plugin.theme-dark  button.g_yellow {
+  color:  #e4cb58;
+  background: none;
+  border: 1px solid;
+}
+body.style-options-for-buttons-plugin.theme-dark  button.g_green {
+  color:  #19bc8b;
+  background: none;
+  border: 1px solid;
+}
+body.style-options-for-buttons-plugin.theme-dark  button.g_lightgreen {
+  color:  #8fc866;
+  background: none;
+  border: 1px solid;
+}
+body.style-options-for-buttons-plugin.theme-dark  button.g_purple {
+  color:  #ffa260;
+  background: none;
+  border: 1px solid;
+}
+body.style-options-for-buttons-plugin.theme-dark  button.g_blue {
+  color:  #739df9;
+  background: none;
+  border: 1px solid;
+}
+body.style-options-for-buttons-plugin.theme-dark .grad_button:hover {
+  color: var(--text-accent)
+}
+
+button.tiny {
+  border-radius: 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  min-width:3.5em;
+  cursor: pointer;
+  margin: 0;
+  padding:3px 6px;
+  background-color: transparent;
+  color: var(--text-normal);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 35px, rgba(0, 0, 0, 0.05) 0px 5px 5px;
+}
+button.tiny:hover {
+  color: var(--text-on-accent);
+}
+button.tiny::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  transform: translate3d(-50%,-50%,0) scale(0,0);
+  border-radius: 50%;
+  background-color: var(--interactive-accent-hover);
+  transform-origin: center;
+  transition: ease-in-out .5s;
+}
+
+button.tiny:hover::before {
+  transform: translate3d(-50%,-50%,0) scale(15,15);
+}
+
+
+/*buttons*/
+.is-mobile .nav-action-button {
+  padding: 3px 8px;
+}
+
+.is-mobile .workspace-leaf-content[data-type='file-explorer'] .nav-buttons-container {
+  margin: 0 0 5px 0;
+}
+
+.is-mobile .workspace-leaf-content .view-header-icon {
+  padding: 7px 3px 5px 8px;
+}
+
+.is-mobile .nav-buttons-container>.nav-action-button svg {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+/* side bar button */
+.is-mobile .side-dock-ribbon-action {
+  padding: 5px;
+}
+
+.is-mobile .cm-s-obsidian .HyperMD-codeblock {
+  color: var(--text-color-code);
+}
+
+.is-mobile :is(.markdown-preview-view,.markdown-rendered) blockquote {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.is-mobile code:not([class*='language-']),
+.is-mobile .cm-s-obsidian span.cm-inline-code {
+  padding: 5px 3px 2px;
+}
+
+.is-mobile .workspace>.workspace-split>.workspace-leaf:first-of-type:last-of-type .view-header {
+  background: linear-gradient(120deg, var(--color-view-header-gradient-1) 0%, var(--color-view-header-gradient-2) 90%) !important;
+}
+
+.is-mobile .cm-s-obsidian .cm-gutters {
+  background-color: transparent !important;
+}
+
+.is-mobile .cm-foldGutter .cm-gutterElement {
+  color: transparent !important;
+}
+
+.is-mobile .cm-formatting.cm-formatting-quote {
+  color: var(--red);
+}
+
+body:not(.font-family-change-to-default).is-mobile .markdown-source-view.mod-cm6 .cm-scroller {
+  font-family: var(--font-text);
+}
+
+.is-mobile #calendar-container {
+  padding: 0 4px 2px 4px;
+  margin: unset !important;
+  line-height: unset;
+}
+
+.is-mobile #calendar-container .calendar {
+  margin-left: -8px !important;
+  width: 103%;
+}
+
+.is-mobile #calendar-container th {
+  padding: 2px 0 !important;
+}
+
+.is-mobile #calendar-container td {
+  padding: 0 !important;
+  line-height: 24px !important;
+}
+
+.is-mobile #calendar-container th {
+  padding: 10px 0;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+}
+
+.is-mobile #calendar-container tr {
+  background-color: transparent;
+}
+
+.is-mobile #calendar-container .dot {
+  margin-top: 0 !important;
+}
+
+.is-mobile #calendar-container .hollow {
+  margin: 0 !important;
+}
+
+.is-mobile .workspace-drawer-header-name {
+  font-size: 25px;
+}
+
+.is-mobile .workspace-drawer-header-name-text {
+  color: var(--text-accent);
+  font-weight: 600;
+}
+
+.is-mobile .workspace-drawer-active-tab-header {
+  margin: 5px 0;
+}
+
+.is-mobile .workspace-drawer.mod-left {
+  border-right: none;
+}
+
+.is-mobile .workspace-drawer.mod-right {
+  border-left: none;
+}
+
+.is-mobile .workspace-drawer.mod-right .workspace-drawer-inner {
+  background: linear-gradient(to left, var(--background-mobile-drawer-1) 30%, var(--background-mobile-drawer-2) 100%);
+}
+
+.is-mobile .workspace-drawer.mod-left .workspace-drawer-inner {
+  background: linear-gradient(to right, var(--background-mobile-drawer-1) 30%, var(--background-mobile-drawer-2) 100%);
+}
+
+.is-mobile .workspace-drawer-ribbon {
+  background-color: var(--background-secondary-alt);
+}
+
+.is-mobile .nav-buttons-container {
+  margin-bottom: 10px;
+}
+
+.is-mobile .cm-line .cm-link.cm-strong {
+  color: var(--text-accent);
+}
+
+.is-mobile .cm-line .cm-formatting.cm-formatting-link,
+.is-mobile .cm-line .cm-string.cm-strong.cm-url {
+  color: var(--text-muted);
+}
+
+.is-mobile .search-result-file-match-replace-button {
+  color: var(--text-normal);
+}
+
+.is-mobile :is(.markdown-preview-view,.markdown-rendered).kanban-plugin__markdown-preview-view {
+  padding: 0 5px;
+}
+
+/*左侧边栏样式选择*/
+.oz-folders-tree-wrapper .oz-folder-contents {
+  border-left: 1px solid var(--background-modifier-border);
+}
+.oz-folders-tree-wrapper .file-tree-header-fixed {
+  background-color: transparent;
+}
+body.hide-titlebar-close-btn.hide-left-ribbon-retention-drawer .file-tree-plugin-view .oz-nav-action-button
+{
+  margin-left: 20px!important;
+}
+.file-tree-plugin-view .oz-flex-container
+{
+ margin-top: -6px;
+}
+.file-tree-plugin-view  .oz-folders-tree-wrapper{
+  margin-top: -8px;
+}
+
+body.view-button-front.hide-titlebar-close-btn.hide-left-ribbon-retention-drawer.color-scheme-options-simplicity-topaz .workspace-leaf-content .view-header .view-header-nav-buttons {
+  margin-left: 5px;
+}
+
+body.hide-titlebar-close-btn.hide-left-ribbon-retention-drawer.view-button-front  .workspace-leaf-content[data-mode='source'] .view-content .markdown-source-view:not(.is-live-preview)::before
+{
+  left: 38px;
+}
+
+body.hide-left-ribbon .workspace-ribbon.mod-left:not(:hover):before,
+body.hide-left-ribbon .workspace-ribbon.side-dock-ribbon.mod-left:not(:hover),
+body.hide-left-ribbon .workspace-ribbon.side-dock-ribbon.mod-left:not(:hover) .sidebar-toggle-button.mod-left {
+  margin-left: -40px;
+}
+
+body.hide-left-ribbon .workspace-ribbon.side-dock-ribbon.mod-left .sidebar-toggle-button.mod-left,
+body.hide-left-ribbon .workspace-ribbon.mod-left:before,
+body.hide-left-ribbon .workspace-ribbon.side-dock-ribbon.mod-left {
+  transition: all 350ms ease-in-out;
+}
+
+
+body.hide-left-ribbon-retention-drawer.hide-titlebar-close-btn.is-hidden-frameless .titlebar-button.mod-logo {
+  display: none;
+}
+
+body.hide-left-ribbon-retention-drawer.hide-titlebar-close-btn.is-hidden-frameless .workspace-ribbon.mod-left .sidebar-toggle-button {
+  padding-top: var(--size-4-2);
+}
+body.hide-left-ribbon-retention-drawer .workspace-ribbon.mod-left:not(:hover) ~ .workspace-split .workspace-tabs.mod-top.mod-top-left-space .workspace-tab-header-container {
+  margin-left: 30px;
+  transition: all 350ms ease-in-out;
+}
+body.hide-left-ribbon-retention-drawer .workspace-ribbon.mod-left:not(:hover):before,
+body.hide-left-ribbon-retention-drawer .workspace-ribbon.side-dock-ribbon.mod-left:not(:hover) {
+  margin-left: -40px;
+}
+
+body.hide-left-ribbon-retention-drawer .workspace-ribbon.side-dock-ribbon.mod-left .sidebar-toggle-button.mod-left,
+body.hide-left-ribbon-retention-drawer .workspace-ribbon.mod-left:before,
+body.hide-left-ribbon-retention-drawer .workspace-ribbon.side-dock-ribbon.mod-left,
+body.hide-left-ribbon-retention-drawer .workspace-ribbon.mod-left:hover ~ .workspace-split .workspace-tabs.mod-top .workspace-tab-header-container {
+  transition: all 350ms ease-in-out;
+
+}
+body.hide-titlebar-close-btn.hide-left-ribbon-retention-drawer .workspace-ribbon.side-dock-ribbon.mod-left .sidebar-toggle-button.mod-left
+{
+  background: unset;
+}
+
+
+body.hide-left-ribbon-retention-drawer:not(.background-settings-workplace-background-image) .workspace-tabs.mod-top {
+  /*background: var(--background-secondary-alt);  适配AnuPpuccin主题*/
+  background: var(--anp-colorful-frame-color);
+}
+body.stack-tab-text-ori-mixed .workspace-tab-header-inner-title {
+  text-orientation: mixed;
 }

@@ -6,10 +6,10 @@
     "[AnuPpuccin]custom-rainbow-colors",
     "[AnuPpuccin]extended-colorschemes",
     "[AnuPpuccin]floating-search-bar",
-    "涂黑圆角",
     "Blue Topaz Legacy"
   ],
   "textFontFamily": "霞鹜文楷",
   "monospaceFontFamily": "JetBrains Mono",
-  "interfaceFontFamily": "Chalkboard SE,Comic Sans MS"
+  "interfaceFontFamily": "Chalkboard SE,Comic Sans MS",
+  "baseFontSize": 18
 }
