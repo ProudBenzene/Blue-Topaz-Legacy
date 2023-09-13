@@ -102,6 +102,13 @@ settings:
       level: 3
       collapsed: true
     -
+      id: highlight-switch
+      title: Toggle Highlight in Blue Topaz Style
+      title.zh: 开启Blue Topaz风格高亮
+      type: class-toggle
+      default: true
+      addCommand: ture
+    -
       id: text-highlight
       title: Highlight text color
       title.zh: 高亮文本颜色
@@ -1849,48 +1856,48 @@ div.CodeMirror-activeline .CodeMirror-line span.cm-formatting-link.cm-strong.cm-
 }
 
 /* highlight */
-:is(.markdown-preview-view,.markdown-rendered) mark {
+.highlight-switch :is(.markdown-preview-view,.markdown-rendered) mark {
   background-color: var(--text-highlight-bg);
   padding: 1px 2px;
   color: var(--text-highlight);
   border-radius: var(--radius-xs);
 }
 
-.cm-s-obsidian span.cm-highlight,
-.cm-highlight.cm-quote {
+.highlight-switch .cm-s-obsidian span.cm-highlight,
+.highlight-switch .cm-highlight.cm-quote {
   color: var(--text-highlight);
   padding: 2px 0 1px 0;
 }
 
-body:not(.no-rounded-corners-highlight):not(.all-rounded-corners-highlight) .cm-s-obsidian .cm-widgetBuffer[aria-hidden="true"]+span.cm-highlight:has(+ .cm-widgetBuffer[aria-hidden="true"]) {
+body.highlight-switch :not(.no-rounded-corners-highlight):not(.all-rounded-corners-highlight) .cm-s-obsidian .cm-widgetBuffer[aria-hidden="true"]+span.cm-highlight:has(+ .cm-widgetBuffer[aria-hidden="true"]) {
   border-radius: 3px;
   padding: 1px 2px;
 }
 
-.cm-s-obsidian span.cm-formatting-highlight {
+.highlight-switch .cm-s-obsidian span.cm-formatting-highlight {
   border-radius: 3px 0 0 3px;
 }
 
-.cm-s-obsidian span[class="cm-highlight"]+span.cm-formatting-highlight,
-.cm-s-obsidian span[class*="cm-highlight"][class*="cm-list"]+span.cm-formatting-highlight,
-.cm-s-obsidian span[class*="cm-highlight"][class*="cm-quote"]+span.cm-formatting-highlight,
-.cm-s-obsidian span[class*="cm-highlight"][class*="cm-header"]+span.cm-formatting-highlight,
-.cm-s-obsidian span[class*="cm-highlight"][class*="cm-formatting-code"][class*="cm-inline-code"]+span.cm-formatting-highlight,
-.cm-s-obsidian span[class*="cm-highlight"][class*="cm-formatting-link"]+span.cm-formatting-highlight,
-.cm-s-obsidian span[class*="cm-highlight"][class*="cm-hmd-internal-link"]+span.cm-formatting-highlight,
-.cm-s-obsidian span[class*="cm-highlight"][class*="cm-strong"]+span.cm-formatting-highlight,
-.cm-s-obsidian span[class*="cm-highlight"][class*="cm-em"]+span.cm-formatting-highlight,
-.cm-s-obsidian span[class*="cm-highlight"][class*="strikethrough"]+span.cm-formatting-highlight {
+.highlight-switch .cm-s-obsidian span[class="cm-highlight"]+span.cm-formatting-highlight,
+.highlight-switch .cm-s-obsidian span[class*="cm-highlight"][class*="cm-list"]+span.cm-formatting-highlight,
+.highlight-switch .cm-s-obsidian span[class*="cm-highlight"][class*="cm-quote"]+span.cm-formatting-highlight,
+.highlight-switch .cm-s-obsidian span[class*="cm-highlight"][class*="cm-header"]+span.cm-formatting-highlight,
+.highlight-switch .cm-s-obsidian span[class*="cm-highlight"][class*="cm-formatting-code"][class*="cm-inline-code"]+span.cm-formatting-highlight,
+.highlight-switch .cm-s-obsidian span[class*="cm-highlight"][class*="cm-formatting-link"]+span.cm-formatting-highlight,
+.highlight-switch .cm-s-obsidian span[class*="cm-highlight"][class*="cm-hmd-internal-link"]+span.cm-formatting-highlight,
+.highlight-switch .cm-s-obsidian span[class*="cm-highlight"][class*="cm-strong"]+span.cm-formatting-highlight,
+.highlight-switch .cm-s-obsidian span[class*="cm-highlight"][class*="cm-em"]+span.cm-formatting-highlight,
+.highlight-switch .cm-s-obsidian span[class*="cm-highlight"][class*="strikethrough"]+span.cm-formatting-highlight {
   border-radius: 0 3px 3px 0;
 }
 
-span.cm-formatting.cm-formatting-code.cm-highlight.cm-inline-code,
-span.cm-highlight.cm-inline-code {
+span.highlight-switch .cm-formatting.cm-formatting-code.cm-highlight.cm-inline-code,
+span.highlight-switch .cm-highlight.cm-inline-code {
   border-radius: 0;
   padding: 2px 0 1px !important;
 }
 
-.theme-dark .cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight {
+.highlight-switch .theme-dark .cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight {
   background-image: initial;
   background-clip: initial;
   -webkit-background-clip: initial;
@@ -1899,63 +1906,63 @@ span.cm-highlight.cm-inline-code {
   color: var(--text-highlight);
 }
 
-.CodeMirror-lines span.cm-strong.cm-em.cm-highlight {
+.highlight-switch .CodeMirror-lines span.cm-strong.cm-em.cm-highlight {
   padding: 0 1px 1px;
 }
 
-body.all-rounded-corners-highlight .cm-s-obsidian span.cm-highlight, 
-body.all-rounded-corners-highlight :is(.markdown-preview-view,.markdown-rendered) mark {
+body.highlight-switch.all-rounded-corners-highlight .cm-s-obsidian span.cm-highlight, 
+body.highlight-switch.all-rounded-corners-highlight :is(.markdown-preview-view,.markdown-rendered) mark {
   -webkit-box-decoration-break: clone;
   border-radius: 5px;
   padding: 1px 2px;
   margin: 0 2px;
 }
 
-body.all-rounded-corners-highlight .cm-s-obsidian .cm-formatting.cm-formatting-highlight:has(+ span.cm-highlight) {
+body.highlight-switch.all-rounded-corners-highlight .cm-s-obsidian .cm-formatting.cm-formatting-highlight:has(+ span.cm-highlight) {
   border-radius: 5px 0 0 5px;
   padding: 1px 0;
   margin: 0 -5px 0 2px;
 }
 
-body.all-rounded-corners-highlight .cm-s-obsidian .cm-formatting.cm-formatting-highlight+span.cm-highlight:has(+ span.cm-highlight) {
+body.highlight-switch.all-rounded-corners-highlight .cm-s-obsidian .cm-formatting.cm-formatting-highlight+span.cm-highlight:has(+ span.cm-highlight) {
   padding: 1px 4px;
 }
 
-body.all-rounded-corners-highlight .cm-s-obsidian span.cm-highlight+.cm-formatting.cm-formatting-highlight {
+body.highlight-switch.all-rounded-corners-highlight .cm-s-obsidian span.cm-highlight+.cm-formatting.cm-formatting-highlight {
   border-radius: 0 5px 5px 0;
   padding: 1px 0;
   margin: 0 2px 0 -5px;
 }
 
-body.no-rounded-corners-highlight .cm-s-obsidian span.cm-highlight, 
-body.no-rounded-corners-highlight :is(.markdown-preview-view,.markdown-rendered) mark {
+body.highlight-switch.no-rounded-corners-highlight .cm-s-obsidian span.cm-highlight, 
+body.highlight-switch.no-rounded-corners-highlight :is(.markdown-preview-view,.markdown-rendered) mark {
   border-radius: 0;
   padding: 0;
   margin: 0;
 }
 
-.theme-light .cm-s-obsidian span.cm-formatting-highlight,
-.theme-light .cm-s-obsidian span.cm-highlight:not([class*="code"]),
-.theme-light :is(.markdown-preview-view,.markdown-rendered) mark,
-.theme-light .cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight,
-.theme-light .popover mark,
-.theme-light span.cm-strong.cm-em.cm-highlight {
+.highlight-switch.theme-light .cm-s-obsidian span.cm-formatting-highlight,
+.highlight-switch.theme-light .cm-s-obsidian span.cm-highlight:not([class*="code"]),
+.highlight-switch.theme-light :is(.markdown-preview-view,.markdown-rendered) mark,
+.highlight-switch.theme-light .cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight,
+.highlight-switch.theme-light .popover mark,
+.highlight-switch.theme-light span.cm-strong.cm-em.cm-highlight {
   background-color: hsla(var(--text-highlight-bg-h-light), var(--text-highlight-bg-s-light), var(--text-highlight-bg-l-light), var(--text-highlight-bg-a-light));
 }
-.theme-dark .cm-s-obsidian span.cm-formatting-highlight,
-.theme-dark .cm-s-obsidian span.cm-highlight:not([class*="code"]),
-.theme-dark :is(.markdown-preview-view,.markdown-rendered) mark,
-.theme-dark .cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight,
-.theme-dark .popover mark,
-.theme-dark span.cm-strong.cm-em.cm-highlight {
+.highlight-switch.theme-dark .cm-s-obsidian span.cm-formatting-highlight,
+.highlight-switch.theme-dark .cm-s-obsidian span.cm-highlight:not([class*="code"]),
+.highlight-switch.theme-dark :is(.markdown-preview-view,.markdown-rendered) mark,
+.highlight-switch.theme-dark .cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight,
+.highlight-switch.theme-dark .popover mark,
+.highlight-switch.theme-dark span.cm-strong.cm-em.cm-highlight {
   background-color: hsla(var(--text-highlight-bg-h-dark), var(--text-highlight-bg-s-dark), var(--text-highlight-bg-l-dark), var(--text-highlight-bg-a-dark));
 }
 
-.theme-light :is(.markdown-preview-view,.markdown-rendered) :not(font)>strong>em>mark {
+.highlight-switch.theme-light :is(.markdown-preview-view,.markdown-rendered) :not(font)>strong>em>mark {
   background-color: hsla(var(--text-highlight-bg-h-light), calc(var(--text-highlight-bg-s-light)*1.5), calc(var(--text-highlight-bg-l-light)*0.6), calc(var(--text-highlight-bg-a-light)*0.28));
 }
 
-.theme-dark :is(.markdown-preview-view,.markdown-rendered) :not(font)>strong>em>mark {
+.highlight-switch.theme-dark :is(.markdown-preview-view,.markdown-rendered) :not(font)>strong>em>mark {
   background-color: hsla(var(--text-highlight-bg-h-dark), calc(var(--text-highlight-bg-s-dark)*1.5), calc(var(--text-highlight-bg-l-dark)*1.1), calc(var(--text-highlight-bg-a-dark)*0.55));
 }
 
