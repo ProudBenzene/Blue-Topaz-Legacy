@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "README.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               }
             }
@@ -135,6 +135,16 @@
               "type": "outline",
               "state": {
                 "file": "README.md"
+              }
+            }
+          },
+          {
+            "id": "bf038d3e70e1c345",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
               }
             }
           }
