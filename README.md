@@ -1,7 +1,14 @@
+---
+title: 浓缩精华——Blue Topaz Legacy
+aliases: 浓缩精华——Blue Topaz Legacy
+date created: 2023-9-1, 13:20 pm
+date modified: 2023-9-14, 01:48 am
+---
+
 > [!note]
 > A css snippet used to bring useful features in the BT theme to Obsidian non-Blue Topaz theme users.
 >
-> **原作者主题见**： https://github.com/PKM-er/Blue-Topaz_Obsidian-css
+> **原作者主题见**：https://github.com/PKM-er/Blue-Topaz_Obsidian-css
 
 # 浓缩精华——Blue Topaz Legacy
 ## 制作初衷
@@ -10,27 +17,23 @@
 
 除此之外，本片段也集合了少数非 bt 主题，但我个人认为好用的小功能。各功能是否启用，大家可以通过 Style Settings 插件设置自行把握。
 
-下面简要介绍一下截止版本 v 1.4， Blue Topaz Legacy 包含的功能。
+下面简要介绍一下截止版本 v 1.4，Blue Topaz Legacy 包含的功能。
 
 > [!attention]+ 本片段的 AnuPpuccin 适配性
 > 由于本人主力使用 AnuPpuccin 主题，因此对于片段和主题的一些不兼容之处，本人是以 AnuPpuccin 主题的视角进行适配修改的。
 > 如果您使用的不是 AnuPpuccin 主题，可能会出现一些适配上的错误。但是您可以通过修改本人在 CSS 代码中注释提到「AnuPpuccin」的地方，使片段调整适配您的主题。
 
-
 ## Typography：字体与排版
 
 ![字体与排版设置|300](assets/README.assets/image-20230804081213575.png)
 
-
-
 ### 字体与排版设置
-
 
 具体包括：
 
 - **强调字体**和**库名字体**自定义
 - 强调**字体颜色自定义**，加粗斜体的字体颜色是*线性渐变色*，强调字体优先级为：粗体>斜体>内链
-- 增加**高亮背景颜色**、高亮文字颜色的简单设置
+- 增加**高亮背景颜色**、高亮文字颜色的简单设置，并提供是否开启 Blue Topaz 风格高亮的选项
 - 增加**行内代码**样式设置
 - 增加**挖空涂黑样式**设置，以及可以设置涂黑样式是否开启**圆角**
 - 增加**标题设置**，可以对不同层级的标题的**段前距**、**段后距**以及**缩进程度**进行调整
@@ -38,15 +41,12 @@
 
 ![强掉字体展示](assets/README.assets/image-20230711230856232.png)
 
-
 > [!attention]+ 注意
 > 若要在阅读模式使用段落首行缩进与两端对齐样式，需要下载安装 *Contextual Typography* 插件。
 
 ## Markdown 元素
 
 ![Markdown 元素|300](assets/README.assets/image-20230804081653737.png)
-
-
 
 ### 链接美化
 
@@ -82,6 +82,10 @@
 - 可以设置表格是否**全宽**
 - 有四种**显示样式**可供选择
 
+另外，还有 Blue Topaz 主题以外的新增样式：
+
+- 三线表（Three-Line-Table）表格样式，包括在主题中选择样式和在 metadata 的 cssclass 中声明 `three-line-table` 两种激活方式。
+
 ### 列表
 
 具体包括：
@@ -102,6 +106,7 @@
 - with Numbers
 
 ### Metadata 样式
+
 可以设置在阅读模式下仅显示 metadata 中的 `alias` 和 `tag` 字段。
 
 ### Admonition 特别样式支持
@@ -129,12 +134,9 @@
 - `Hide to left`：不使用时将左侧边栏简单粗暴地缩起
 - `Hide to the left retention drawer`：相比上一选项更加丝滑，但可能需要针对主题单独适配。
 
-
 ### 类笔记样式背景设置
 
 ![类笔记样式背景设置|300](assets/README.assets/image-20230804083408324.png)
-
-
 
 具体包括：
 
@@ -143,9 +145,17 @@
 - 可以设置几种**不同的网格**
 - 可以设置**网线、背景板的颜色**
 
-### 加载页面
+### 侧面拆分面板中的 md 文件
 
-施工中……欢迎PR(ಥ_ಥ)
+可以设置侧面拆分面板中 md 文件的
+
+- 字体大小
+- 行间距
+- 或切换回与中间面板中 md 一致的「默认模式」」
+
+### 加载页面
+- 可以在 Obsidian 显示加载动画时将默认加载动画替换为自定义文字
+- 自定义文字可以辅以不同的动态效果显示
 
 ## 未出现在 Style Settings 中的效果
 
@@ -165,6 +175,7 @@
 - 图片**大小设置**
 
 下面只是大致介绍，图片排版优化的具体详细使用方法，可以参考 Blue Topaz 示例库在这方面的说明。
+
 #### 图片自适应横排
 - 方法一：图片加 `|inline`，放在同一行。可以单独调整大小
 - 方法二：图片加 `|+grid`，放在同一行，会自动调整大小，也可以独单调整
@@ -218,3 +229,4 @@
 ## 目前已知问题⚠️
 
 - 尽量不要使用带有==「**全宽显示**」==的 style settings，因为开启会导致 Obsidian「外观」设置中的「**缩减栏宽**」设置失效。
+- 「[[#加载页面]]」文字功能，只有当其他三种效果同时打开时，移动效果才不会生效。

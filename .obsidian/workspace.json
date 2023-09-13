@@ -4,6 +4,20 @@
     "type": "split",
     "children": [
       {
+        "id": "8ce868708d5902b2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8b6077f17dd5d53a",
+            "type": "leaf",
+            "state": {
+              "type": "style-settings",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
         "id": "52b266ced8ee11a9",
         "type": "tabs",
         "children": [
@@ -164,7 +178,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "049f72c658b55fa0",
+  "active": "8b6077f17dd5d53a",
   "lastOpenFiles": [
     "assets/README.assets/image-20230804083408324.png",
     "assets/README.assets/image-20230804081653737.png",
