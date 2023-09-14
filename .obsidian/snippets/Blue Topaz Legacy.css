@@ -1,6 +1,6 @@
 /* @settings
 
-name: Blue Topaz Legacy (sorted by @ProudBenzene)
+name: Blue Topaz Legacy
 id: Blue-Topaz-Legacy
 settings:
     -
@@ -634,6 +634,9 @@ settings:
         -
           label: Non-wrapped table
           value: no-wrapped-table
+        -
+          label: Three-Line Table
+          value: three-line-table
     -
       id: show-border-table
       title: Show Borders
@@ -1321,6 +1324,31 @@ settings:
       default-light: '#'
       default-dark: '#'
     -
+      id: other-typography-settings
+      title: .md File in Split Pane
+      title.zh: 侧面拆分面板中的md文件
+      type: heading
+      level: 2
+      collapsed: true
+    -
+      id: font-size-split
+      title: Font Size
+      title.zh: 字体大小
+      type: variable-text
+      default: 0.85em
+    -
+      id: line-height-split
+      title: Line Height
+      title.zh: 行间距
+      type: variable-number
+      default: 1.3
+    -
+      id: default-split-style
+      title: Toggle Default Style
+      title.zh: 切换默认样式
+      type: class-toggle
+      default: false
+    -
       id: loading-page-style-folder
       title: Loading Page
       title.zh: 加载页面
@@ -1627,6 +1655,11 @@ body {
 
 /*===========图片宽度自适应============*/
   --image-max-width: 100% /*让笔记中的大图自适应宽度显示*/
+
+/*=============侧边栏===============*/
+--font-size-split: 0.85em;
+--line-height-split: 1.3;
+
 
 /*============加载页面============*/
   --loading-diy-text: "快乐摸鱼又一天，人生还剩多少天？";
@@ -5370,6 +5403,24 @@ body.no-wrapped-dvtable-cell .dataview.table-view-table :is(th,td):hover {
 }
 /*modified from https://forum.obsidian.md/t/custom-css-for-tables-5-new-styles-ready-to-use-in-your-notes/17084 */
 
+/**三线表**/
+body.theme-light {
+    --table-border-color-3: black;
+}
+body.theme-dark {
+    --table-border-color-3: white;
+}
+.three-line-table table {
+    border: 1px solid transparent;
+    border-top: 3px solid var(--table-border-color-3);
+    border-bottom: 3px solid var(--table-border-color-3);
+    text-align: left;
+}
+.three-line-table thead {
+    border-bottom: 1.5px solid var(--table-border-color-3);
+    text-align: left;
+}
+
 /****dataview table***/
 table.table-view-table > thead > tr > th {
   font-size: 0.9em;
@@ -5666,6 +5717,37 @@ div[class*="-backlinks"].markdown-preview-view .markdown-preview-sizer.markdown-
 /***end--Full-width table display--end****/
 
 /*==========加载画面==========*/
+/*default loading page*/
+body:not(:is(.default-loading-page,.is-popout-window)) .progress-bar-message {
+  visibility: hidden;
+}
+
+body:not(.default-loading-page).loading-page-style-default .progress-bar-message:before {
+  content: "";
+  width: 80px;
+  height: 80px;
+  position: relative;
+  animation: shape 2.5s infinite alternate;
+  visibility: visible !important;
+  display: block;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+}
+
+body:not(.default-loading-page).theme-light .progress-bar {
+  background-color: white;
+}
+body:not(.default-loading-page).theme-dark .progress-bar {
+  background-color: #222222;
+}
+
+
+body:not(.loading-custom-text) .setting-item[data-id="loading-custom-text-folder"],
+body:not(.loading-animation-custom) .setting-item[data-id="loading-animation-custom-folder"] {
+  display: none;
+}
+
 /*加载画面的文字*/
 body:not(.default-loading-page).loading-add-icons .progress-bar-message::before {
   all: initial;
@@ -8236,4 +8318,24 @@ body.hide-left-ribbon-retention-drawer:not(.background-settings-workplace-backgr
 }
 body.stack-tab-text-ori-mixed .workspace-tab-header-inner-title {
   text-orientation: mixed;
+}
+
+/*========侧边栏md文件样式========*/
+body:not(.default-split-style) .workspace>.workspace-split:not(.mod-root) .CodeMirror,
+body:not(.default-split-style) .workspace>.workspace-split:not(.mod-root) .cm-scroller,
+body:not(.default-split-style) .workspace>.workspace-split:not(.mod-root) .markdown-preview-sizer {
+  line-height: var(--line-height-split) !important;
+  font-size: var(--font-size-split) !important;
+}
+body:not(.default-split-style) .workspace>.workspace-split:not(.mod-root) :is(.markdown-preview-view,.markdown-rendered) {
+  padding: 7px 9px 7px 19px;
+}
+body:not(.default-split-style) .workspace>.workspace-split:not(.mod-root) .cm-scroller {
+  padding: 7px 10px 7px 30px;
+}
+body:not(.default-split-style) .workspace>.workspace-split:not(.mod-root) .cm-gutters {
+  padding-right: 10px;
+}
+body:not(.default-split-style) .workspace>.workspace-split:not(.mod-root) .cm-lineNumbers .cm-gutterElement {
+  padding: 0;
 }
