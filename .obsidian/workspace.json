@@ -4,8 +4,24 @@
     "type": "split",
     "children": [
       {
+        "id": "8ce868708d5902b2",
+        "type": "tabs",
+        "dimension": 32.06831119544592,
+        "children": [
+          {
+            "id": "8b6077f17dd5d53a",
+            "type": "leaf",
+            "state": {
+              "type": "style-settings",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
         "id": "52b266ced8ee11a9",
         "type": "tabs",
+        "dimension": 67.93168880455408,
         "children": [
           {
             "id": "049f72c658b55fa0",
@@ -166,10 +182,12 @@
   },
   "active": "049f72c658b55fa0",
   "lastOpenFiles": [
+    "你好.md",
+    "README.md",
+    "nihao.md",
     "assets/README.assets/image-20230804083408324.png",
     "assets/README.assets/image-20230804081653737.png",
     "assets/README.assets/image-20230804081213575.png",
-    "README.md",
     "PKMer投稿.md",
     "assets/PKMer投稿.assets/image-20230804081041661.png",
     "assets/PKMer投稿.assets",

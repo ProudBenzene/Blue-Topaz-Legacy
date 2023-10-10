@@ -1,6 +1,6 @@
 /* @settings
 
-name: Blue Topaz Legacy (sorted by @ProudBenzene)
+name: Blue Topaz Legacy
 id: Blue-Topaz-Legacy
 settings:
     -
@@ -553,7 +553,7 @@ settings:
     -
       id: embed-folder
       title: Embeds
-      title.zh: 嵌入样式
+      title.zh: 嵌入样式&悬浮弹窗样式
       type: heading
       level: 2
       collapsed: true
@@ -601,6 +601,16 @@ settings:
       title.zh: 嵌入笔记浮动效果
       type: class-toggle
       default: false
+    -
+      id: background-popover
+      title: Hover Popover Background Color
+      title.zh: 悬浮弹窗背景色
+      description: --background-popover
+      type: variable-themed-color
+      opacity: true
+      format: hex
+      default-light: '#FFFFFF'
+      default-dark: '#1E1E1E'
     -
       id: table-styles
       title: Table
@@ -1594,6 +1604,7 @@ body {
   --blur-codebox-frosted-glass: 2;
 
   /*===========嵌入相关============*/
+  --background-popover: var(--color-base-10);
   --font-size-embed-title-size: 1.3em;
   --font-size-embed-file: 1.25em;
   --embed-content-height: 600px;
