@@ -1,7 +1,7 @@
 {
   "attachmentFolderPath": "./assets/README.assets",
-  "useMarkdownLinks": true,
-  "newLinkFormat": "relative",
+  "useMarkdownLinks": false,
+  "newLinkFormat": "shortest",
   "promptDelete": false,
   "alwaysUpdateLinks": true
 }
