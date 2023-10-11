@@ -610,7 +610,7 @@ settings:
       opacity: true
       format: hex
       default-light: '#FFFFFF'
-      default-dark: '#1E1E1E'
+      default-dark: '#1E1E1E'      
     -
       id: table-styles
       title: Table
@@ -1473,8 +1473,21 @@ settings:
       title.zh: 是否开启Buttons特别样式支持
       type: class-toggle
       default: true
-      description : 目前内置class：🔸circle_btn 圆形按钮🔸blank 透明按钮🔸grad_button渐变按钮🟣g_purple 紫色🔵g_blue蓝色🟢g_green 绿色💚g_lightgreen 浅绿🟡g_yellow黄色
+      description: 目前内置class：🔸circle_btn 圆形按钮🔸blank 透明按钮🔸grad_button渐变按钮🟣g_purple 紫色🔵g_blue蓝色🟢g_green 绿色💚g_lightgreen 浅绿🟡g_yellow黄色
     -
+      id: style-options-for-hover-editor-plugin-heading
+      title: Hover Editor
+      type: heading
+      level: 2
+      collapsed: true
+    -
+      id: style-options-for-hover-editor-plugin-metadata
+      title: Hover Editor Metadata style support
+      title.zh: 关闭Hover Editor预览模式下的属性面板
+      type: class-toggle
+      default: true
+      description: 在主笔记属性面板不受影响的前提下关闭Hover Editor预览模式下的属性面板
+
 
 
 */
@@ -1578,7 +1591,7 @@ body {
 
   /*===================库名称字体====================*/
     /*font size*/
-  --font-size-vault-name: 1em;/*左侧库名字体大小*/
+  --font-size-vault-name: 19.5px;/*左侧库名字体大小*/
   --font-size-folder-and-file: 0.9em;/*左侧边栏文件字体大小*/
 
     /*font family*/
@@ -2011,9 +2024,9 @@ body.highlight-switch.no-rounded-corners-highlight :is(.markdown-preview-view,.m
 }
 
 /*===================库名称字体====================*/
-.nav-folder.mod-root>.nav-folder-title {
+.nav-folder.mod-root>.nav-folder-title .nav-folder-title-content {
   padding-left: 5px;
-  font-size: var(--font-size-vault-name);
+  font-size: var(--font-size-vault-name)!important;
   font-family: var(--font-family-vault);
   font-weight: bolder;
   text-shadow: 1px 1px 6px var(--theme-color-translucent-04);
@@ -2157,8 +2170,8 @@ body:not(.obsidian-default-image) .print :is(.markdown-preview-view,.markdown-re
 body:not(.obsidian-default-image) .view-content  :not(.canvas-node-content)>img:not([class*="emoji"]) {
   cursor: zoom-in;
   display: block;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 body:not(.image-zoom) .markdown-reading-view button img,
 body:not(.image-zoom) .markdown-reading-view .callout-title-inner img {
@@ -8349,4 +8362,9 @@ body:not(.default-split-style) .workspace>.workspace-split:not(.mod-root) .cm-gu
 }
 body:not(.default-split-style) .workspace>.workspace-split:not(.mod-root) .cm-lineNumbers .cm-gutterElement {
   padding: 0;
+}
+
+/*========Hover Editor========*/
+.style-options-for-hover-editor-plugin-metadata .popover.hover-editor .markdown-preview-view.show-properties .metadata-container {
+    display: none;
 }

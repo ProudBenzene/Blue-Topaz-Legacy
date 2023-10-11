@@ -110,24 +110,6 @@ date modified: 2023-9-14, 01:48 am
 
 可以设置在阅读模式下仅显示 metadata 中的 `alias` 和 `tag` 字段。
 
-### Admonition 特别样式支持
-
-完全适配了 Blue Topaz 内置的所有 ad 类型，包括：
-
-目前支持 ad 类型：
-
-- blank **全透明框**
-- def definition
-- thm theorem
-- lem lemma
-- cor corollary
-- pro proposition
-- hibox **自动隐藏框**
-- col 2 col 3 col 4 **内容分多栏**
-- kanban **伪看板**
-- table **表格单行全部显示**
-
-关于 Callout 的部分可以见 [[README#Callout 增强|Callout增强]]
 
 ## 页面设置
 ### 左侧边栏样式选择
@@ -157,6 +139,33 @@ date modified: 2023-9-14, 01:48 am
 ### 加载页面
 - 可以在 Obsidian 显示加载动画时将默认加载动画替换为自定义文字
 - 自定义文字可以辅以不同的动态效果显示
+
+## 插件
+### Admonition 特别样式支持
+
+完全适配了 Blue Topaz 内置的所有 ad 类型，包括：
+
+目前支持 ad 类型：
+
+- blank **全透明框**
+- def definition
+- thm theorem
+- lem lemma
+- cor corollary
+- pro proposition
+- hibox **自动隐藏框**
+- col 2 col 3 col 4 **内容分多栏**
+- kanban **伪看板**
+- table **表格单行全部显示**
+
+关于 Callout 的部分可以见 [[README#Callout 增强|Callout增强]]
+
+### buttons
+
+### Hover Editor
+
+- 增加了控制 hover editor 是否显示 metadata 属性面板的选项。
+
 
 ## 未出现在 Style Settings 中的效果
 

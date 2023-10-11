@@ -12,5 +12,5 @@
   "monospaceFontFamily": "JetBrains Mono",
   "interfaceFontFamily": "Chalkboard SE,Comic Sans MS",
   "baseFontSize": 18,
-  "theme": "moonstone"
+  "theme": "system"
 }

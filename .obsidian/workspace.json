@@ -6,6 +6,7 @@
       {
         "id": "8ce868708d5902b2",
         "type": "tabs",
+        "dimension": 32.06831119544592,
         "children": [
           {
             "id": "8b6077f17dd5d53a",
@@ -179,7 +180,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "8b6077f17dd5d53a",
+  "active": "049f72c658b55fa0",
   "lastOpenFiles": [
     "你好.md",
     "README.md",
