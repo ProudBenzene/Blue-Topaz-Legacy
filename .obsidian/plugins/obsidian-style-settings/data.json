@@ -465,5 +465,8 @@
   "blue-topaz-theme@@full-width-callout": false,
   "Blue-Topaz-Legacy@@full-width-callout": false,
   "Blue-Topaz-Legacy@@style-options-for-admonition-plugin": true,
-  "Blue-Topaz-Legacy@@remove-table-transition": false
+  "Blue-Topaz-Legacy@@remove-table-transition": false,
+  "Blue-Topaz-Legacy@@link-underline-internal": false,
+  "Blue-Topaz-Legacy@@default-unresolved-link": true,
+  "Blue-Topaz-Legacy@@link-click": true
 }

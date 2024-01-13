@@ -4,24 +4,8 @@
     "type": "split",
     "children": [
       {
-        "id": "8ce868708d5902b2",
-        "type": "tabs",
-        "dimension": 32.06831119544592,
-        "children": [
-          {
-            "id": "8b6077f17dd5d53a",
-            "type": "leaf",
-            "state": {
-              "type": "style-settings",
-              "state": {}
-            }
-          }
-        ]
-      },
-      {
         "id": "52b266ced8ee11a9",
         "type": "tabs",
-        "dimension": 67.93168880455408,
         "children": [
           {
             "id": "049f72c658b55fa0",
@@ -34,8 +18,29 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "372bd39255eae5ab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "832a6222b2db2224",
+            "type": "leaf",
+            "state": {
+              "type": "style-settings",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,8 +90,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 210.5,
-    "collapsed": true
+    "width": 210.5
   },
   "right": {
     "id": "8df061e044d53085",
@@ -160,7 +164,9 @@
             "state": {
               "type": "all-properties",
               "state": {
-                "sortOrder": "frequency"
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
               }
             }
           }
@@ -180,10 +186,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "049f72c658b55fa0",
+  "active": "372bd39255eae5ab",
   "lastOpenFiles": [
-    "你好.md",
+    "测试.md",
     "README.md",
+    "你好.md",
     "nihao.md",
     "assets/README.assets/image-20230804083408324.png",
     "assets/README.assets/image-20230804081653737.png",

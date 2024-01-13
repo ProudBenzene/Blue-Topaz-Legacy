@@ -236,6 +236,10 @@ date modified: 2023-9-14, 01:48 am
 - callout metadata *no-border*：实现首页隐藏边框，天气问候
 - callout metadata *banner*：实现首页隐藏边框，天气问候
 
+一些增强适配，防止片段的样式与主题或其他片段冲突：
+- 与 AnuPpuccin 的 sleek 样式 callout 完美兼容
+- 支持 PLN 主题的 callout 片段，不会发生冲突
+
 ## 目前已知问题⚠️
 
 - 尽量不要使用带有==「**全宽显示**」==的 style settings，因为开启会导致 Obsidian「外观」设置中的「**缩减栏宽**」设置失效。
