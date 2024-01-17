@@ -2548,6 +2548,12 @@ body span[alt*="+grid"] {
   font-size: 0.85rem;
 }
 
+
+/*input[type=checkbox] {
+  -webkit-appearance: auto;
+  appearance: auto;
+}*  适配默认主题/
+
 /* ================================== */
 /* ======= Callout======= */
 /* ================================== */
