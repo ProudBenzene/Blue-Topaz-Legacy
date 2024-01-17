@@ -610,7 +610,7 @@ settings:
       opacity: true
       format: hex
       default-light: '#FFFFFF'
-      default-dark: '#1E1E1E'
+      default-dark: '#1E1E1E'      
     -
       id: table-styles
       title: Table
@@ -644,9 +644,6 @@ settings:
         -
           label: Non-wrapped table
           value: no-wrapped-table
-        -
-          label: Three-Line Table
-          value: three-line-table
     -
       id: show-border-table
       title: Show Borders
@@ -673,14 +670,17 @@ settings:
           label: Default
           value: table-style-default
         -
-          label: Style I
+          label: Style I（表头突出）
           value: table-style-one
         -
-          label: Style II
+          label: Style II（奇偶行突出）
           value: table-style-two
         -
-          label: Style III
+          label: Style III（透明表格）
           value: table-style-three
+        -
+          label: Three-Line Table Style（三线表）
+          value: three-line-table
     -
       id: list-style-change-options-folder
       title: List
@@ -1262,6 +1262,12 @@ settings:
       default: false
       addCommand: ture
     -
+      id: notebook-embed
+      title: Toggle Notebook-liked embed Background
+      title.zh: 取消嵌入笔记背景
+      type: class-toggle
+      default: false
+    -
       id: notebook-liked-markdown-page-options
       title: Notebook-liked Background
       title.zh: 类笔记背景
@@ -1299,8 +1305,8 @@ settings:
       type: variable-themed-color
       opacity: true
       format: hex
-      default-light: '#'
-      default-dark: '#'
+      default-light: '#FFFCF1'
+      default-dark: '#2A2A2A'
     -
       id: grid-notebook-line-color-1
       title: Grid notebook line color
@@ -1473,8 +1479,21 @@ settings:
       title.zh: 是否开启Buttons特别样式支持
       type: class-toggle
       default: true
-      description : 目前内置class：🔸circle_btn 圆形按钮🔸blank 透明按钮🔸grad_button渐变按钮🟣g_purple 紫色🔵g_blue蓝色🟢g_green 绿色💚g_lightgreen 浅绿🟡g_yellow黄色
+      description: 目前内置class：🔸circle_btn 圆形按钮🔸blank 透明按钮🔸grad_button渐变按钮🟣g_purple 紫色🔵g_blue蓝色🟢g_green 绿色💚g_lightgreen 浅绿🟡g_yellow黄色
     -
+      id: style-options-for-hover-editor-plugin-heading
+      title: Hover Editor
+      type: heading
+      level: 2
+      collapsed: true
+    -
+      id: style-options-for-hover-editor-plugin-metadata
+      title: Hover Editor Metadata style support
+      title.zh: 关闭Hover Editor预览模式下的属性面板
+      type: class-toggle
+      default: true
+      description: 在主笔记属性面板不受影响的前提下关闭Hover Editor预览模式下的属性面板
+
 
 
 */
@@ -1536,8 +1555,8 @@ body {
   --text-faint: #7f7f7f
 
   --background-primary-bg-4-bt: #ffffff;
-  --background-primary: var(--background-primary-bg-4-bt,#202020);
-  --background-primary-alt: var(--background-primary-alt-bg-4-bt,#444444);
+  --background-primary: var(--bg-color-notebook);
+  --background-primary-alt: var(--bg-color-notebook);
 
   /*挖空语法颜色*/
   --accent-strong: var(--interactive-accent);
@@ -1578,7 +1597,7 @@ body {
 
   /*===================库名称字体====================*/
     /*font size*/
-  --font-size-vault-name: 1em;/*左侧库名字体大小*/
+  --font-size-vault-name: 19.5px;/*左侧库名字体大小*/
   --font-size-folder-and-file: 0.9em;/*左侧边栏文件字体大小*/
 
     /*font family*/
@@ -1592,8 +1611,8 @@ body {
     /*color*/
   --main-color:#f1b024;
   --interactive-accent: var(--main-color);
-  --background-secondary: var(--background-secondary-bg-4-bt,#2A2A2A);
-  --background-secondary-alt: var(--background-secondary-alt-bg-4-bt,#444444);
+  --background-secondary: var(--background-secondary-bg-4-bt,--bg-color-notebook);
+  --background-secondary-alt: var(--background-secondary-alt-bg-4-bt,--bg-color-notebook);
   --theme-color: var(--interactive-accent);
   --theme-color-translucent-06: hsla(var(--interactive-accent-hsl),0.6);
   --theme-color-translucent-04: hsla(var(--interactive-accent-hsl),0.4);
@@ -2011,9 +2030,9 @@ body.highlight-switch.no-rounded-corners-highlight :is(.markdown-preview-view,.m
 }
 
 /*===================库名称字体====================*/
-.nav-folder.mod-root>.nav-folder-title {
+.nav-folder.mod-root>.nav-folder-title .nav-folder-title-content {
   padding-left: 5px;
-  font-size: var(--font-size-vault-name);
+  font-size: var(--font-size-vault-name)!important;
   font-family: var(--font-family-vault);
   font-weight: bolder;
   text-shadow: 1px 1px 6px var(--theme-color-translucent-04);
@@ -2038,7 +2057,7 @@ body.highlight-switch.no-rounded-corners-highlight :is(.markdown-preview-view,.m
 }
 
 /*===================网格背景====================*/
-body.background-notebook-liked-switch .markdown-reading-view .markdown-embed .markdown-rendered
+body.background-notebook-liked-switch.notebook-embed .markdown-reading-view .markdown-embed .markdown-rendered
 {
   background-image: unset!important;
 }
@@ -2157,8 +2176,8 @@ body:not(.obsidian-default-image) .print :is(.markdown-preview-view,.markdown-re
 body:not(.obsidian-default-image) .view-content  :not(.canvas-node-content)>img:not([class*="emoji"]) {
   cursor: zoom-in;
   display: block;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 body:not(.image-zoom) .markdown-reading-view button img,
 body:not(.image-zoom) .markdown-reading-view .callout-title-inner img {
@@ -2529,6 +2548,12 @@ body span[alt*="+grid"] {
   font-size: 0.85rem;
 }
 
+
+/*input[type=checkbox] {
+  -webkit-appearance: auto;
+  appearance: auto;
+}*  适配默认主题/
+
 /* ================================== */
 /* ======= Callout======= */
 /* ================================== */
@@ -2559,6 +2584,8 @@ body.border-callout-style .callout .callout-content {
 }
 .callout-title {
   background-color: rgba(var(--callout-color), 0.15);
+  padding: var(--callout-title-padding);
+  /*padding: var(--callout-padding); 默认主题下*/
 }
 .callout-title-inner {
   flex: 1 1 auto;
@@ -2979,8 +3006,18 @@ body.admonition-bg-color-same .callout-title {
   box-shadow: none;
   border: none;
 }
+.anp-callout-sleek .callout:is([data-callout-metadata*="noborder"],
+[data-callout*=noborder]):not([data-callout-metadata*=anp-block], [data-callout-metadata*=anp-vanilla-normal], [data-callout-metadata*=anp-vanilla-plus]):not([data-callout-metadata*=revert], [data-callout=blank-container], [data-callout=multi-column]) {
+  --callout-border-width: 0px; /*适配AnuPpuccin的sleek风格*/
+  background-color: transparent;
+}
+.callout.callout:is([data-callout-metadata*="noborder"],
+[data-callout*=noborder]) {
+  border-top: 0!important;
+  border-left: 0!important;
+}
 
-/* ===banner============ */
+/* ===========banner============ */
 .is-live-preview .admonition-flex .callout.callout[data-callout-metadata*="banner"]:nth-child(2) {
   margin-top: -1.5em;
 }
@@ -3017,6 +3054,7 @@ body.admonition-bg-color-same .callout-title {
 .callout.callout[data-callout-metadata*="banner"] .callout-title h3::before {
   display: none;
 }
+
 /* ===隐藏标题============ */
 .callout.callout:is([data-callout-metadata*="notitle"],
 [data-callout*=notitle]) .callout-title {
@@ -3683,6 +3721,11 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
   background-color: transparent !important; /*Anuppuccin适配*/
   box-shadow: none;
   border: none;
+}
+.anp-callout-sleek .callout:is([data-callout-metadata*="icon"],
+[data-callout*="icon"]):not([data-callout-metadata*=anp-block], [data-callout-metadata*=anp-vanilla-normal], [data-callout-metadata*=anp-vanilla-plus]):not([data-callout-metadata*=revert], [data-callout=blank-container], [data-callout=multi-column]) {
+  --callout-border-width: 0px; /*适配AnuPpuccin的sleek风格*/
+  background-color: transparent;
 }
 /***Sticky notes  便签效果**/
 .callout[data-callout="stickies"] {
@@ -4617,7 +4660,7 @@ body.style-options-for-admonition-plugin .admonition-hibox .admonition-title {
 /*========段落首行缩进========*/
 /* from blue topaz */
 body.text-indentation-two-em .markdown-source-view.mod-cm6 div.cm-line:not(.HyperMD-header),
-.markdown-source-view.mod-cm6.indent div.cm-line:not(.HyperMD-header) {
+.markdown-source-view.mod-cm6.indent div.cm-line:not(.HyperMD-header) div.tag {
   text-indent: 2em;
 }
 
@@ -5414,24 +5457,6 @@ body.no-wrapped-dvtable-cell .dataview.table-view-table :is(th,td):hover {
 }
 /*modified from https://forum.obsidian.md/t/custom-css-for-tables-5-new-styles-ready-to-use-in-your-notes/17084 */
 
-/**三线表**/
-body.theme-light {
-    --table-border-color-3: black;
-}
-body.theme-dark {
-    --table-border-color-3: white;
-}
-.three-line-table table {
-    border: 1px solid transparent;
-    border-top: 3px solid var(--table-border-color-3);
-    border-bottom: 3px solid var(--table-border-color-3);
-    text-align: left;
-}
-.three-line-table thead {
-    border-bottom: 1.5px solid var(--table-border-color-3);
-    text-align: left;
-}
-
 /****dataview table***/
 table.table-view-table > thead > tr > th {
   font-size: 0.9em;
@@ -5605,6 +5630,46 @@ body.table-style-three :is(.markdown-preview-view,.markdown-rendered) table tbod
 body.table-style-three .markdown-source-view table tbody>tr {
   background-color: transparent;
 }
+
+/**三线表**/
+body.theme-light {
+    --table-border-color-3: black;
+}
+body.theme-dark {
+    --table-border-color-3: white;
+}
+.three-line-table table {
+    border: 1px solid transparent;
+    border-top: 3px solid var(--table-border-color-3);
+    border-bottom: 3px solid var(--table-border-color-3);
+    text-align: left;
+}
+.three-line-table thead {
+    border-bottom: 1.5px solid var(--table-border-color-3);
+    text-align: left;
+}
+body.three-line-table :is(.markdown-preview-view,.markdown-rendered) :is(th,td) {
+  border: 0px;
+}
+
+body.three-line-table.theme-light {
+  --table-background-color-odd: rgba(0, 0, 0, 0.02);
+  --table-background-color: rgba(0, 0, 0, 0.02);
+  --table-thead-background-color: rgba(0, 0, 0, 0.1);
+  --table-hover-color: rgba(0, 0, 0, 0.03);
+  --table-hover-raw-color: rgba(0, 0, 0, 0.05);
+  --table-hover-thead-color: var(--table-thead-background-color);
+}
+body.three-line-table.theme-dark {
+  --table-background-color-odd: rgba(0, 0, 0, 0.3);
+  --table-background-color: rgba(0, 0, 0, 0.3);
+  --table-thead-background-color: rgba(0, 0, 0, 0.5);
+  --table-hover-color: rgba(0, 0, 0, 0.5);
+  --table-hover-raw-color: rgba(0, 0, 0, 0.5);
+  --table-hover-thead-color: var(--table-thead-background-color);
+}
+
+
 
 /*table hover*/
 :is(.markdown-preview-view,.markdown-rendered) td:hover,
@@ -8349,4 +8414,9 @@ body:not(.default-split-style) .workspace>.workspace-split:not(.mod-root) .cm-gu
 }
 body:not(.default-split-style) .workspace>.workspace-split:not(.mod-root) .cm-lineNumbers .cm-gutterElement {
   padding: 0;
+}
+
+/*========Hover Editor========*/
+.style-options-for-hover-editor-plugin-metadata .popover.hover-editor .markdown-preview-view.show-properties .metadata-container {
+    display: none;
 }

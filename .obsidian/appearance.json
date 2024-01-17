@@ -2,15 +2,11 @@
   "accentColor": "",
   "cssTheme": "AnuPpuccin",
   "enabledCssSnippets": [
-    "Blue Topaz Codebox",
-    "[AnuPpuccin]custom-rainbow-colors",
-    "[AnuPpuccin]extended-colorschemes",
-    "[AnuPpuccin]floating-search-bar",
     "Blue Topaz Legacy"
   ],
-  "textFontFamily": "霞鹜文楷",
+  "textFontFamily": "霞鹜文楷 屏幕阅读版,霞鹜文楷",
   "monospaceFontFamily": "JetBrains Mono",
-  "interfaceFontFamily": "Chalkboard SE,Comic Sans MS",
+  "interfaceFontFamily": "霞鹜文楷 屏幕阅读版,Chalkboard SE,Comic Sans MS",
   "baseFontSize": 18,
-  "theme": "moonstone"
+  "theme": "system"
 }
