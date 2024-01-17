@@ -644,9 +644,6 @@ settings:
         -
           label: Non-wrapped table
           value: no-wrapped-table
-        -
-          label: Three-Line Table
-          value: three-line-table
     -
       id: show-border-table
       title: Show Borders
@@ -673,14 +670,17 @@ settings:
           label: Default
           value: table-style-default
         -
-          label: Style I
+          label: Style I（表头突出）
           value: table-style-one
         -
-          label: Style II
+          label: Style II（奇偶行突出）
           value: table-style-two
         -
-          label: Style III
+          label: Style III（透明表格）
           value: table-style-three
+        -
+          label: Three-Line Table Style（三线表）
+          value: three-line-table
     -
       id: list-style-change-options-folder
       title: List
@@ -1262,6 +1262,12 @@ settings:
       default: false
       addCommand: ture
     -
+      id: notebook-embed
+      title: Toggle Notebook-liked embed Background
+      title.zh: 取消嵌入笔记背景
+      type: class-toggle
+      default: false
+    -
       id: notebook-liked-markdown-page-options
       title: Notebook-liked Background
       title.zh: 类笔记背景
@@ -1299,8 +1305,8 @@ settings:
       type: variable-themed-color
       opacity: true
       format: hex
-      default-light: '#'
-      default-dark: '#'
+      default-light: '#FFFCF1'
+      default-dark: '#2A2A2A'
     -
       id: grid-notebook-line-color-1
       title: Grid notebook line color
@@ -1549,8 +1555,8 @@ body {
   --text-faint: #7f7f7f
 
   --background-primary-bg-4-bt: #ffffff;
-  --background-primary: var(--background-primary-bg-4-bt,#202020);
-  --background-primary-alt: var(--background-primary-alt-bg-4-bt,#444444);
+  --background-primary: var(--bg-color-notebook);
+  --background-primary-alt: var(--bg-color-notebook);
 
   /*挖空语法颜色*/
   --accent-strong: var(--interactive-accent);
@@ -1605,8 +1611,8 @@ body {
     /*color*/
   --main-color:#f1b024;
   --interactive-accent: var(--main-color);
-  --background-secondary: var(--background-secondary-bg-4-bt,#2A2A2A);
-  --background-secondary-alt: var(--background-secondary-alt-bg-4-bt,#444444);
+  --background-secondary: var(--background-secondary-bg-4-bt,--bg-color-notebook);
+  --background-secondary-alt: var(--background-secondary-alt-bg-4-bt,--bg-color-notebook);
   --theme-color: var(--interactive-accent);
   --theme-color-translucent-06: hsla(var(--interactive-accent-hsl),0.6);
   --theme-color-translucent-04: hsla(var(--interactive-accent-hsl),0.4);
@@ -2051,7 +2057,7 @@ body.highlight-switch.no-rounded-corners-highlight :is(.markdown-preview-view,.m
 }
 
 /*===================网格背景====================*/
-body.background-notebook-liked-switch .markdown-reading-view .markdown-embed .markdown-rendered
+body.background-notebook-liked-switch.notebook-embed .markdown-reading-view .markdown-embed .markdown-rendered
 {
   background-image: unset!important;
 }
@@ -2572,6 +2578,8 @@ body.border-callout-style .callout .callout-content {
 }
 .callout-title {
   background-color: rgba(var(--callout-color), 0.15);
+  padding: var(--callout-title-padding);
+  /*padding: var(--callout-padding); 默认主题下*/
 }
 .callout-title-inner {
   flex: 1 1 auto;
@@ -5443,24 +5451,6 @@ body.no-wrapped-dvtable-cell .dataview.table-view-table :is(th,td):hover {
 }
 /*modified from https://forum.obsidian.md/t/custom-css-for-tables-5-new-styles-ready-to-use-in-your-notes/17084 */
 
-/**三线表**/
-body.theme-light {
-    --table-border-color-3: black;
-}
-body.theme-dark {
-    --table-border-color-3: white;
-}
-.three-line-table table {
-    border: 1px solid transparent;
-    border-top: 3px solid var(--table-border-color-3);
-    border-bottom: 3px solid var(--table-border-color-3);
-    text-align: left;
-}
-.three-line-table thead {
-    border-bottom: 1.5px solid var(--table-border-color-3);
-    text-align: left;
-}
-
 /****dataview table***/
 table.table-view-table > thead > tr > th {
   font-size: 0.9em;
@@ -5634,6 +5624,46 @@ body.table-style-three :is(.markdown-preview-view,.markdown-rendered) table tbod
 body.table-style-three .markdown-source-view table tbody>tr {
   background-color: transparent;
 }
+
+/**三线表**/
+body.theme-light {
+    --table-border-color-3: black;
+}
+body.theme-dark {
+    --table-border-color-3: white;
+}
+.three-line-table table {
+    border: 1px solid transparent;
+    border-top: 3px solid var(--table-border-color-3);
+    border-bottom: 3px solid var(--table-border-color-3);
+    text-align: left;
+}
+.three-line-table thead {
+    border-bottom: 1.5px solid var(--table-border-color-3);
+    text-align: left;
+}
+body.three-line-table :is(.markdown-preview-view,.markdown-rendered) :is(th,td) {
+  border: 0px;
+}
+
+body.three-line-table.theme-light {
+  --table-background-color-odd: rgba(0, 0, 0, 0.02);
+  --table-background-color: rgba(0, 0, 0, 0.02);
+  --table-thead-background-color: rgba(0, 0, 0, 0.1);
+  --table-hover-color: rgba(0, 0, 0, 0.03);
+  --table-hover-raw-color: rgba(0, 0, 0, 0.05);
+  --table-hover-thead-color: var(--table-thead-background-color);
+}
+body.three-line-table.theme-dark {
+  --table-background-color-odd: rgba(0, 0, 0, 0.3);
+  --table-background-color: rgba(0, 0, 0, 0.3);
+  --table-thead-background-color: rgba(0, 0, 0, 0.5);
+  --table-hover-color: rgba(0, 0, 0, 0.5);
+  --table-hover-raw-color: rgba(0, 0, 0, 0.5);
+  --table-hover-thead-color: var(--table-thead-background-color);
+}
+
+
 
 /*table hover*/
 :is(.markdown-preview-view,.markdown-rendered) td:hover,
