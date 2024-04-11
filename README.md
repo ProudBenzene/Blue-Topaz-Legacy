@@ -180,6 +180,12 @@
 
 - 增加了控制 hover editor 是否显示 metadata 属性面板的选项。
 
+
+### Thino
+
+- Thino 在 modern 模式下的背景图、模糊风格
+- Thino 的分享卡片背景自定义
+
 ## 未出现在 Style Settings 中的效果
 
 ### 图片自适应显示
