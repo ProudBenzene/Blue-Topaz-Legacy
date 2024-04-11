@@ -10,6 +10,25 @@ date modified: 2024-4-12, 02:34 am
 >
 > **原作者主题见**：https://github.com/PKM-er/Blue-Topaz_Obsidian-css
 
+
+> [!warning]
+> /***关于默认主题***/
+> 如果您使用默认主题搭配Blue Topaz Legacy，则为了防止出现不必要的bug，您需要先设置好一个选项。推荐您先安装一个其他主题以使您能够看清Obsidian界面。具体设置选项如下：
+> 1. 打开style setting，选择Blue Topaz Legacy
+> 2. 选择“页面设置”→“类笔记样式背景设置”（无论您之后是否会使用到snippet的类笔记样式背景功能）
+> 3. 设置“Notebook background color”，尽可能使用您认为您分别在浅色和深色模式下能看清界面的颜色
+> 因为默认主题缺少`--background-primary`这个颜色变量，而Legacy片段中许多部分都有引用这个变量，因此如果不设置该变量会导致Obsidian界面颜色出现错误。
+> 为了方便起见，我暂时将Notebook background color赋值给这个颜色变量，使其与视觉习惯保持一致。
+> ---
+> /***About the Default Theme***/
+> If you are using the default theme with Blue Topaz Legacy, you will need to set up an option first in order to prevent unwanted bugs. It is recommended that you install a different theme first to enable you to see the Obsidian interface. The options are listed below:
+> 1. Open the style setting and select Blue Topaz Legacy 
+> 2. Select "Page Setting" → "Notebook Background Setting" (no matter whether you will use the notebook background function of snippet or not) 
+> 3. Set the "Notebook background color" and use the color that you think you can see the interface clearly in light and dark mode respectively. Set the "Notebook background color" to a color that you think you can see well in light and dark modes respectively.
+> Because the default theme lacks the `--background-primary` color variable, which is referenced in many parts of the Legacy snippet, failure to set this variable will result in an error in the Obsidian interface colors.
+> For convenience, I'm temporarily assigning the Notebook background color to this color variable to make it consistent with visual conventions.
+
+
 # 浓缩精华——Blue Topaz Legacy
 ## 制作初衷
 
