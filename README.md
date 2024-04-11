@@ -2,7 +2,7 @@
 title: 浓缩精华——Blue Topaz Legacy
 aliases: 浓缩精华——Blue Topaz Legacy
 date created: 2023-9-1, 13:20 pm
-date modified: 2023-9-14, 01:48 am
+date modified: 2024-4-12, 02:34 am
 ---
 
 > [!note]
@@ -42,7 +42,8 @@ date modified: 2023-9-14, 01:48 am
 ![强掉字体展示](assets/README.assets/image-20230711230856232.png)
 
 > [!attention]+ 注意
-> 若要在阅读模式使用段落首行缩进与两端对齐样式，需要下载安装 *Contextual Typography* 插件。
+> ~~若要在阅读模式使用段落首行缩进与两端对齐样式，需要下载安装 *Contextual Typography* 插件。~~
+> 在更新 1.10 版本后，不再需要 Contextual Typography 插件。
 
 ## Markdown 元素
 
@@ -110,7 +111,6 @@ date modified: 2023-9-14, 01:48 am
 
 可以设置在阅读模式下仅显示 metadata 中的 `alias` 和 `tag` 字段。
 
-
 ## 页面设置
 ### 左侧边栏样式选择
 - `fixed`：默认设置，左侧边栏保持显示
@@ -140,6 +140,7 @@ date modified: 2023-9-14, 01:48 am
 ### 加载页面
 - 可以在 Obsidian 显示加载动画时将默认加载动画替换为自定义文字
 - 自定义文字可以辅以不同的动态效果显示
+- 自定义图片：虽然添上了选项，但是暂时无法生效，监修中
 
 ## 插件
 ### Admonition 特别样式支持
@@ -161,12 +162,11 @@ date modified: 2023-9-14, 01:48 am
 
 关于 Callout 的部分可以见 [[README#Callout 增强|Callout增强]]
 
-### buttons
+### Buttons
 
 ### Hover Editor
 
 - 增加了控制 hover editor 是否显示 metadata 属性面板的选项。
-
 
 ## 未出现在 Style Settings 中的效果
 
@@ -238,10 +238,13 @@ date modified: 2023-9-14, 01:48 am
 - callout metadata *banner*：实现首页隐藏边框，天气问候
 
 一些增强适配，防止片段的样式与主题或其他片段冲突：
+
 - 与 AnuPpuccin 的 sleek 样式 callout 完美兼容
 - 支持 PLN 主题的 callout 片段，不会发生冲突
 
 ## 目前已知问题⚠️
 
 - 尽量不要使用带有==「**全宽显示**」==的 style settings，因为开启会导致 Obsidian「外观」设置中的「**缩减栏宽**」设置失效。
-- 「[[#加载页面]]」文字功能，只有当其他三种效果同时打开时，移动效果才不会生效。
+- 「 [[#加载页面]] 」文字功能，只有当其他三种效果同时打开时，移动效果才不会生。
+- 「 [[#加载页面]] 」图片功能，暂时未生效。
+- 默认主题下任务框样式看不见。

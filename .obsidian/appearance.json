@@ -2,13 +2,11 @@
   "accentColor": "",
   "cssTheme": "AnuPpuccin",
   "enabledCssSnippets": [
-    "Blue Topaz Legacy",
-    "[AnuPpuccin]custom-rainbow-colors",
-    "[AnuPpuccin]extended-colorschemes"
+    "Blue Topaz Legacy"
   ],
   "textFontFamily": "霞鹜文楷 屏幕阅读版,霞鹜文楷",
   "monospaceFontFamily": "JetBrains Mono",
   "interfaceFontFamily": "霞鹜文楷 屏幕阅读版,Chalkboard SE,Comic Sans MS",
   "baseFontSize": 18,
-  "theme": "system"
+  "theme": "moonstone"
 }
