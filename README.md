@@ -1,9 +1,4 @@
----
-title: 浓缩精华——Blue Topaz Legacy
-aliases: 浓缩精华——Blue Topaz Legacy
-date created: 2023-9-1, 13:20 pm
-date modified: 2024-4-12, 02:34 am
----
+# 浓缩精华——Blue Topaz Legacy
 
 > [!note]
 > A css snippet used to bring useful features in the BT theme to Obsidian non-Blue Topaz theme users.
@@ -28,8 +23,6 @@ date modified: 2024-4-12, 02:34 am
 > Because the default theme lacks the `--background-primary` color variable, which is referenced in many parts of the Legacy snippet, failure to set this variable will result in an error in the Obsidian interface colors.
 > For convenience, I'm temporarily assigning the Notebook background color to this color variable to make it consistent with visual conventions.
 
-
-# 浓缩精华——Blue Topaz Legacy
 ## 制作初衷
 
 *Blue Topaz* 主题是一个非常优秀的主题，由 3 f 等多位大佬一起开发而来，内含许多种自定义方案以及强大的扩展功能。但是除去这些最为明显的优势，该主题在==「**基础优化**」==方面的优秀也是不可忽视的。例如在许多从其他平台迁移而来的用户看来理所当然的「首行缩进」、「两端对齐」功能，图片自适应显示强调字体的颜色、挖空涂黑等等新的字体强调方式，以及一些 admonition 小组件的 css 处理。这些功能不仅默认主题中没有，大部分主题（如 *AnuPpuccin*等）也都缺失这些功能, 或者在相应功能上不如 bt 完善。为了在其他主题中也可以使用这些基础优化，达到舒适的编辑体验，我将 *Blue Topaz*主题中包含重要基础优化的片段摘录出来，重新整合成了「**Blue Topaz Legacy**」css 片段，供大家使用。
