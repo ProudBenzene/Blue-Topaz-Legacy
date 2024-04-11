@@ -429,10 +429,6 @@
   "anuppuccin-theme-settings@@anp-custom-bg-card-fg-opacity-dark": 0.5,
   "img-dark@@img-dark-dsfsd": 0.8,
   "Blue-Topaz-Legacy@@link-underline-external": false,
-  "Blue-Topaz-Legacy@@grid-notebook-line-color-1@@light": "#D1D0D0",
-  "Blue-Topaz-Legacy@@grid-notebook-line-color-1@@dark": "#434040",
-  "Blue-Topaz-Legacy@@bg-color-notebook@@light": "#FAF1E300",
-  "Blue-Topaz-Legacy@@bg-color-notebook@@dark": "#2A2A2A00",
   "anuppuccin-theme-settings@@anp-highlight-custom": "anp-highlight-red",
   "anuppuccin-theme-settings@@anp-custom-bg-brightness-light": 0.7,
   "Blue-Topaz-Legacy@@fancy-hr": "default-hr",
@@ -468,5 +464,10 @@
   "Blue-Topaz-Legacy@@remove-table-transition": false,
   "Blue-Topaz-Legacy@@link-underline-internal": false,
   "Blue-Topaz-Legacy@@default-unresolved-link": true,
-  "Blue-Topaz-Legacy@@link-click": true
+  "Blue-Topaz-Legacy@@link-click": true,
+  "Blue-Topaz-Legacy@@grid-notebook-line-color-1@@dark": "#434040",
+  "Blue-Topaz-Legacy@@grid-notebook-line-color-1@@light": "#D1D0D0",
+  "Blue-Topaz-Legacy@@notebook-embed": false,
+  "Blue-Topaz-Legacy@@bg-color-notebook@@light": "#FFFCF1",
+  "Blue-Topaz-Legacy@@bg-color-notebook@@dark": "#2A2A2A"
 }

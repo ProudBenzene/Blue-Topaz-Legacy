@@ -1384,6 +1384,9 @@ settings:
       -
         label: Custom Text
         value: loading-custom-text
+      -
+        label: Adding Image or Animation (GIF)
+        value: loading-animation-custom
     -
       id: loading-custom-text-folder
       title: Custom Text
@@ -1440,6 +1443,22 @@ settings:
       title.zh: 变色效果
       type: class-toggle
       default: false
+    -
+      id: loading-animation-custom-folder
+      title: 2.3.14.3 Custom image/animation
+      type: heading
+      level: 3
+      collapsed: true
+    -
+      id: loading-page-custom-gif-url
+      title: Custom loading page image/animation
+      type: variable-text
+      default: url(https://)
+    -
+      id: loading-page-custom-gif-caption
+      title: Image caption
+      type: variable-text
+      default: " "
     -
       id: plugins
       title: Plugins
@@ -2062,7 +2081,8 @@ body.background-notebook-liked-switch.notebook-embed .markdown-reading-view .mar
   background-image: unset!important;
 }
 body.background-notebook-liked-switch.notebook-liked-markdown-page-grid-notebook-1 .markdown-reading-view .markdown-rendered,
-body.background-notebook-liked-switch.notebook-liked-markdown-page-grid-notebook-1 .markdown-source-view.mod-cm6 .cm-scroller {
+body.background-notebook-liked-switch.notebook-liked-markdown-page-grid-notebook-1 .markdown-source-view.mod-cm6 .cm-scroller,
+.background-notebook-liked-switch.notebook-liked-markdown-page-grid-notebook-1 .export-image-preview-container.markdown-rendered { /* 适配export image插件 */
   background: var(--bg-color-notebook);
   background-image: linear-gradient(90deg, var(--grid-notebook-line-color-1) 3%, transparent 0), linear-gradient(var(--grid-notebook-line-color-1) 3%, transparent 0);
   background-size: 20px 20px;
@@ -2582,14 +2602,14 @@ body.border-callout-style .callout .callout-title {
 body.border-callout-style .callout .callout-content {
   background-color: rgba(var(--callout-color), 0.1);
 }
-.callout-title {
+/*.callout-title {
   background-color: rgba(var(--callout-color), 0.15);
   padding: var(--callout-title-padding);
   /*padding: var(--callout-padding); 默认主题下*/
-}
+}/*
 .callout-title-inner {
   flex: 1 1 auto;
-}
+}*/
 .callout {
   padding: 0;
   /*border-left: 4px solid rgba(var(--callout-color),0.15); 兼容Anu原生callout*/
@@ -2963,16 +2983,16 @@ body.admonition-bg-color-same .callout-title {
 }
 .callout.callout:is([data-callout-metadata*="indent"],
 [data-callout*=indent]) .callout-content>p {
-  text-indent: 2em;
+  text-indent: 2em !important;
 }
 .callout.callout:is([data-callout-metadata*="indent"],
 [data-callout*=indent]) .callout-content blockquote>p {
-  text-indent: 2em;
+  text-indent: 2em !important;
 }
 
 .callout.callout:is([data-callout-metadata*="indent"],
 [data-callout*=indent]) .callout-content p br::after {
-  content: '\A\9\9';
+  content: '\A\9\9' !important;
 }
 
 /* ===段落两端对齐============ */
@@ -4658,14 +4678,45 @@ body.style-options-for-admonition-plugin .admonition-hibox .admonition-title {
 
 
 /*========段落首行缩进========*/
+/* === 段落-首行缩进2个字符 By Linzeal 2024/2/1更新 === */
+
+/* 也包括段落中每个回车换行后的首行缩进 */
+
+/* 摘自https://forum-zh.obsidian.md/t/topic/28562/3 */
+
+.text-indentation-two-em :is(
+.markdown-source-view .cm-line:not(:is(:has(>.cm-hmd-frontmatter,>br),.HyperMD-header,.HyperMD-list-line,.HyperMD-quote,table .cm-line)), /* 编辑模式 */
+.markdown-rendered :not(:is(blockquote,.callout-content)) > p /* 阅读模式 text-indent不支持each-line的办法 */
+){
+  text-indent: 2em !important;
+}
+
+.text-indentation-two-em .markdown-rendered :not(:is(blockquote)) > p
+{
+  /*text-indent: 2em each-line !important; 若支持each-line参数则用这个即可，更为简单，就无需下面的修正 */
+}
+
+/* 阅读模式下对每个回车换行后的首行缩进的修正 */
+.text-indentation-two-em .markdown-rendered :not(:is(blockquote,.callout-content)) > p > br
+{
+  content:'';
+  white-space:pre; 
+}
+.text-indentation-two-em .markdown-rendered :not(:is(blockquote,.callout-content)) > p > br::after
+{
+  content:'\000A\0009\00A0\00A0'; /* Unicode字符编码\0009表示水平制表符，\00A0表示不换行空格，可通过增减、组合搭配这两个Unicode字符来微调回车换行后的首行缩进量 */
+}
+
+/* === CSS代码结束 === */
+
 /* from blue topaz */
-body.text-indentation-two-em .markdown-source-view.mod-cm6 div.cm-line:not(.HyperMD-header),
-.markdown-source-view.mod-cm6.indent div.cm-line:not(.HyperMD-header) div.tag {
+/*body.text-indentation-two-em .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 div.cm-line:not(:is(.HyperMD-header,.HyperMD-quote)),
+.markdown-source-view.mod-cm6.indent div.cm-line:not(:is(.HyperMD-header,.HyperMD-quote)) {
   text-indent: 2em;
 }
 
-body.text-indentation-two-em .markdown-source-view.mod-cm6 div.cm-line:not(.HyperMD-header) .cm-hmd-frontmatter:first-of-type,
-.markdown-source-view.mod-cm6.indent div.cm-line:not(.HyperMD-header) .cm-hmd-frontmatter:first-of-type {
+body.text-indentation-two-em  .workspace-leaf-content[data-type="markdown"]  .markdown-source-view.mod-cm6 div.cm-line:not(:is(.HyperMD-header,.HyperMD-quote)) .cm-hmd-frontmatter:first-of-type,
+.markdown-source-view.mod-cm6.indent div.cm-line:not(:is(.HyperMD-header,.HyperMD-quote)) .cm-hmd-frontmatter:first-of-type {
   margin-left: -2em;
 }
 body.text-indentation-two-em .markdown-source-view.mod-cm6 div.has-banner.cm-line:not(.HyperMD-header) .cm-def.cm-hmd-frontmatter,
@@ -4686,7 +4737,7 @@ body.text-indentation-two-em [data-type="markdown"] div[class="el-p"]:not(blockq
 [data-type="markdown"] :is(.markdown-preview-view,.markdown-rendered).indent div[class="el-p"]:not(blockquote) >  p>br {
   content: ' ';
   white-space: pre;
-  line-height: calc((var(--paragraph-spacing) + 0.3)*1em);
+  line-height: calc((var(--paragraph-spacing) + 0.3) * 1em);
   display:unset;
 }
 body.text-indentation-two-em [data-type="markdown"] div[class="el-p"]:not(blockquote) > p>br::after,
@@ -4694,18 +4745,14 @@ body.text-indentation-two-em [data-type="markdown"] div[class="el-p"]:not(blockq
   content: '\A\9\9';
 }
 
-body.text-indentation-two-em .print *:not(blockquote) > p {
-    text-indent: 2em;
-}
-body.text-indentation-two-em .print *:not(blockquote) > p>br {
-    content: ' ';
-    white-space: pre;
-    line-height: calc((var(--paragraph-spacing) + 0.3)*1em);
-    display:unset;
-}
-body.text-indentation-two-em .print *:not(blockquote) > p>br::after {
-    content: '\A\9\9';
-}
+body.justify-align div[data-type="markdown"] div.cm-line:not(.HyperMD-codeblock),
+body.justify-align div[data-type="markdown"] :is(.markdown-preview-view,.markdown-rendered),
+.markdown-source-view.text-justify div.cm-line:not(.HyperMD-codeblock),
+:is(.markdown-preview-view,.markdown-rendered).text-justify {
+  text-align: justify;
+  hyphens: auto;
+}*/
+
 
 /*========段落两端对齐缩进========*/
 body.justify-align .markdown-source-view.mod-cm6 div[class="cm-line"]:not(.HyperMD-header),
@@ -6013,6 +6060,20 @@ body:not(.default-loading-page).loading-custom-text.loading-text-shinning-style.
   -webkit-transform: translateZ(0);
   will-change: transform;
 }
+
+/****加载图片****/
+body:not(.default-loading-page).loading-animation-custom .progress-bar-message::before {
+  position: initial;
+  animation: unset;
+  display: block;
+  content: var(--loading-page-custom-gif-caption);
+  background: no-repeat center/cover var(--loading-page-custom-gif-url);
+  width: 800px;
+  height: 600px;
+  margin-top: -20px;
+}
+
+
 /*
 /*************** List列表 ***************/
 /*
